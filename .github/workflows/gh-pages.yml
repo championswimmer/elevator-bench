@@ -52,37 +52,7 @@ jobs:
           done
       
       - name: Create index.html
-        run: |
-          # Generate model links dynamically using Python for better multiline handling
-          python3 << 'PYTHON_EOF'
-          import os
-          import re
-          
-          # Read template
-          with open('index.template.html', 'r') as f:
-              template = f.read()
-          
-          # Generate model links
-          model_links = []
-          for folder in sorted(os.listdir('.')):
-              if os.path.isdir(folder) and os.path.isfile(os.path.join(folder, 'index.html')):
-                  # Convert folder name to display name
-                  display_name = ' '.join(word.capitalize() for word in re.split(r'[-_]', folder))
-                  link_html = f'''            <a href="{folder}/" class="model-card">
-                  <div class="model-name">{display_name} <span class="arrow">→</span></div>
-                  <div class="model-description">Elevator simulator implementation</div>
-              </a>'''
-                  model_links.append(link_html)
-          
-          # Replace placeholder
-          result = template.replace('{{MODEL_LINKS}}', '\n              \n'.join(model_links))
-          
-          # Write output
-          with open('dist/index.html', 'w') as f:
-              f.write(result)
-          
-          print(f"Generated index.html with {len(model_links)} model links")
-          PYTHON_EOF
+        run: python3 generate_index.py
       
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
