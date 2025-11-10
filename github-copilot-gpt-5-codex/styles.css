@@ -188,6 +188,11 @@ body {
   color: var(--color-text);
 }
 
+.shaft-header .shaft-status {
+  font-size: 12px;
+  color: var(--color-text-soft);
+}
+
 .shaft {
   position: relative;
   width: var(--shaft-width);
