@@ -1,0 +1,77 @@
+/* styles.css */
+body {
+  display: flex;
+  flex-direction: column;
+  align-items:  center;
+  font-family: sans-serif;
+}
+
+.building {
+  display: flex;
+  border: 3px solid #000;
+  margin-top: 20px;
+}
+
+.floor {
+  display: flex;
+  position: relative;
+  border-bottom: 1px solid #ccc;
+  flex-direction: column;
+  justify-content: center;
+  align-items:  center;
+  width: 120px;
+  height: 100px;
+}
+
+.floor:last-child {
+  border-bottom: none;
+}
+
+.floor-label {
+  position: absolute;
+  font-size: 12px;
+  top: 5px;
+  left: 5px;
+}
+
+.floor-buttons button {
+  margin: 1px;
+  padding: 2px 5px;
+  font-size: 10px;
+}
+
+.elevator-shaft {
+  position: relative;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  width: 80px;
+  height: 1000px;
+}
+
+.elevator {
+  position: absolute;
+  display: flex;
+  background-color: #f0f0f0;
+  border: 1px solid #999;
+  flex-direction: column;
+  justify-content: center;
+  align-items:  center;
+  width: 100%;
+  height: 100px;
+  transition: bottom 1s linear;
+  bottom: 0;
+}
+
+.elevator-label {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.elevator-buttons {
+  margin-top: 5px;
+}
+
+.elevator-buttons button {
+  padding: 1px 3px;
+  font-size: 8px;
+}

@@ -1,0 +1,115 @@
+/* styles.css */
+body {
+  display: flex;
+  background-color: #f0f0f0;
+  justify-content: center;
+  align-items:  center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  text-align: center;
+}
+
+.building {
+  display: flex;
+  position: relative;
+  background-color: #fff;
+  border: 2px solid #333;
+  width: 800px;
+  height: 600px;
+}
+
+.floors {
+  border-right: 2px solid #333;
+  width: 200px;
+}
+
+.floor {
+  display: flex;
+  border-bottom: 1px solid #ccc;
+  justify-content: space-between;
+  align-items:  center;
+  height: 60px;
+  padding: 0 10px;
+}
+
+.floor-number {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+button {
+  color: #fff;
+  cursor: pointer;
+  background-color: #4caf50;
+  border: none;
+  border-radius: 3px;
+  padding: 5px 10px;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+button.active {
+  background-color: #ff9800;
+}
+
+.elevators {
+  position: relative;
+  flex: 1;
+}
+
+.elevator {
+  position: absolute;
+  border: 1px solid #333;
+  width: 150px;
+  height: 600px;
+  top: 0;
+}
+
+.elevator:first-child {
+  left: 0;
+}
+
+.elevator:nth-child(2) {
+  left: 150px;
+}
+
+.elevator:nth-child(3) {
+  left: 300px;
+}
+
+.elevator:nth-child(4) {
+  left: 450px;
+}
+
+.elevator-car {
+  position: absolute;
+  display: flex;
+  background-color: #ddd;
+  border: 1px solid #333;
+  justify-content: center;
+  align-items:  center;
+  width: 100%;
+  height: 60px;
+  transition: bottom 2s ease-in-out;
+  bottom: 0;
+}
+
+.elevator-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+}
+
+.elevator-buttons button {
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  font-size: 12px;
+}

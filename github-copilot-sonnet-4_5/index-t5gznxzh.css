@@ -1,0 +1,296 @@
+/* styles.css */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  padding: 20px;
+  font-family: Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+  color: #fff;
+  text-shadow: 2px 2px 4px #0000004d;
+  margin-bottom: 30px;
+  font-size: 2.5em;
+}
+
+.building-wrapper {
+  display: flex;
+  background: #fff;
+  border-radius: 20px;
+  gap: 30px;
+  padding: 30px;
+  box-shadow: 0 20px 60px #0000004d;
+}
+
+.floor-controls {
+  flex: 0 0 150px;
+}
+
+#floor-buttons {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 10px;
+}
+
+.floor-button-group {
+  display: flex;
+  background: #f5f5f5;
+  border-radius: 10px;
+  align-items:  center;
+  gap: 10px;
+  padding: 10px;
+}
+
+.floor-label {
+  color: #333;
+  min-width: 30px;
+  font-weight: bold;
+}
+
+.floor-btn {
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 15px;
+  transition: all .3s;
+  font-size: 14px;
+  font-weight: bold;
+  box-shadow: 0 2px 5px #0003;
+}
+
+.floor-btn.up {
+  color: #fff;
+  background: #4caf50;
+}
+
+.floor-btn.down {
+  color: #fff;
+  background: #2196f3;
+}
+
+.floor-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px #0000004d;
+}
+
+.floor-btn.active {
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: .5;
+  }
+}
+
+.elevator-shafts {
+  display: flex;
+  flex: 1;
+  gap: 20px;
+}
+
+#elevators {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+}
+
+.elevator-shaft {
+  position: relative;
+  background: linear-gradient(#e0e0e0 0%, #f5f5f5 100%);
+  border: 3px solid #999;
+  border-radius: 10px;
+  flex: 1;
+  min-height: 600px;
+  box-shadow: inset 0 0 20px #0000001a;
+}
+
+.elevator-shaft-header {
+  text-align: center;
+  color: #fff;
+  background: #333;
+  border-radius: 7px 7px 0 0;
+  margin: -3px -3px 0;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.elevator-car {
+  position: absolute;
+  display: flex;
+  color: #fff;
+  background: linear-gradient(135deg, #ff6b6b 0%, #c44569 100%);
+  border: 3px solid #8b2f3e;
+  border-radius: 8px;
+  justify-content: center;
+  align-items:  center;
+  width: 80%;
+  height: 50px;
+  transition: bottom 1s ease-in-out;
+  font-weight: bold;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 5px 15px #0000004d;
+}
+
+.elevator-car.moving {
+  background: linear-gradient(135deg, orange 0%, #ff8c00 100%);
+}
+
+.elevator-car-info {
+  display: flex;
+  flex-direction: column;
+  align-items:  center;
+  font-size: 12px;
+}
+
+.elevator-current-floor {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.elevator-direction {
+  margin-top: 2px;
+  font-size: 10px;
+}
+
+.elevator-controls {
+  flex: 0 0 300px;
+}
+
+.elevator-controls h2 {
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 1.3em;
+}
+
+#elevator-panels {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.elevator-panel {
+  background: #f9f9f9;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  padding: 15px;
+}
+
+.elevator-panel h3 {
+  color: #555;
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 1em;
+}
+
+.floor-buttons-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+}
+
+.floor-destination-btn {
+  cursor: pointer;
+  aspect-ratio: 1;
+  background: #fff;
+  border: 2px solid #666;
+  border-radius: 50%;
+  padding: 10px;
+  transition: all .3s;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.floor-destination-btn:hover {
+  background: #f0f0f0;
+  transform: scale(1.1);
+}
+
+.floor-destination-btn.active {
+  color: #fff;
+  background: #ff6b6b;
+  border-color: #c44569;
+}
+
+.info-panel {
+  background: #fff;
+  border-radius: 20px;
+  margin-top: 30px;
+  padding: 20px;
+  box-shadow: 0 10px 30px #0003;
+}
+
+.info-panel h3 {
+  color: #333;
+  margin-bottom: 15px;
+}
+
+#status-display {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+}
+
+.elevator-status {
+  background: #f5f5f5;
+  border-left: 4px solid #667eea;
+  border-radius: 10px;
+  padding: 15px;
+}
+
+.elevator-status h4 {
+  color: #667eea;
+  margin-bottom: 10px;
+}
+
+.elevator-status p {
+  color: #666;
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.elevator-status .status-idle {
+  color: #4caf50;
+  font-weight: bold;
+}
+
+.elevator-status .status-moving {
+  color: #ff6b6b;
+  font-weight: bold;
+}
+
+@media (max-width: 1200px) {
+  .building-wrapper {
+    flex-direction: column;
+  }
+
+  .floor-controls, .elevator-controls {
+    flex: 1;
+  }
+
+  #floor-buttons {
+    flex-flow: wrap;
+  }
+
+  .elevator-shaft {
+    min-height: 400px;
+  }
+}

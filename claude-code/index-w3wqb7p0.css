@@ -1,0 +1,270 @@
+/* styles.css */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  padding: 20px;
+  font-family: Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+  color: #fff;
+  text-shadow: 2px 2px 4px #0000004d;
+  margin-bottom: 30px;
+  font-size: 2.5rem;
+}
+
+.building {
+  display: flex;
+  background: #fff;
+  border-radius: 15px;
+  gap: 20px;
+  padding: 30px;
+  box-shadow: 0 10px 40px #0000004d;
+}
+
+.floor-controls {
+  flex: 1;
+  min-width: 200px;
+}
+
+.floor-control-header {
+  color: #333;
+  text-align: center;
+  background: #f0f0f0;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  padding: 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.floor-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.floor-button-row {
+  display: flex;
+  background: #f8f9fa;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  justify-content: space-between;
+  align-items:  center;
+  padding: 10px;
+}
+
+.floor-label {
+  color: #333;
+  min-width: 60px;
+  font-weight: bold;
+}
+
+.floor-button-group {
+  display: flex;
+  gap: 8px;
+}
+
+.floor-button {
+  cursor: pointer;
+  color: #fff;
+  background: #6c757d;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 16px;
+  transition: all .3s;
+  font-size: .9rem;
+  font-weight: bold;
+}
+
+.floor-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px #0003;
+}
+
+.floor-button.up {
+  background: #28a745;
+}
+
+.floor-button.down {
+  background: #dc3545;
+}
+
+.floor-button.active {
+  animation: pulse 1s infinite;
+  box-shadow: 0 0 15px #ffc107cc;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: .6;
+  }
+}
+
+.elevator-shafts {
+  display: flex;
+  flex: 2;
+  justify-content: center;
+  gap: 15px;
+  min-height: 600px;
+}
+
+.elevator-shaft {
+  position: relative;
+  background: repeating-linear-gradient(#0000, #0000 9.9%, #ccc 9.9% 10%);
+  border: 3px solid #999;
+  border-radius: 10px;
+  flex: 1;
+  min-width: 100px;
+}
+
+.elevator {
+  position: absolute;
+  display: flex;
+  color: #fff;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: 2px solid #333;
+  border-radius: 8px;
+  flex-direction: column;
+  justify-content: center;
+  align-items:  center;
+  width: 90%;
+  height: 9%;
+  transition: bottom .5s ease-in-out;
+  font-size: .8rem;
+  bottom: .5;
+  left: 5%;
+  box-shadow: 0 4px 8px #0000004d;
+}
+
+.elevator-label {
+  font-size: .9rem;
+  font-weight: bold;
+}
+
+.elevator-status, .elevator-floor {
+  margin-top: 2px;
+  font-size: .75rem;
+}
+
+.elevator.moving {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.elevator-controls {
+  flex: 1.5;
+  min-width: 300px;
+}
+
+.elevator-control-header {
+  color: #333;
+  text-align: center;
+  background: #f0f0f0;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  padding: 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.elevator-panels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.elevator-panel {
+  background: #f8f9fa;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 15px;
+}
+
+.panel-title {
+  color: #333;
+  text-align: center;
+  background: #e9ecef;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  padding: 5px;
+  font-weight: bold;
+}
+
+.panel-buttons {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 5px;
+}
+
+.elevator-button {
+  cursor: pointer;
+  color: #333;
+  background: #fff;
+  border: 2px solid #6c757d;
+  border-radius: 5px;
+  padding: 10px;
+  transition: all .2s;
+  font-size: .9rem;
+  font-weight: bold;
+}
+
+.elevator-button:hover {
+  background: #e9ecef;
+  transform: scale(1.05);
+}
+
+.elevator-button.active {
+  color: #fff;
+  animation: pulse 1s infinite;
+  background: #ffc107;
+  border-color: #ffc107;
+}
+
+.elevator-button:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+@media (max-width: 1200px) {
+  .building {
+    flex-direction: column;
+  }
+
+  .elevator-shafts {
+    min-height: 400px;
+  }
+
+  .elevator-panels {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .elevator-panels {
+    grid-template-columns: 1fr;
+  }
+
+  .panel-buttons {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
