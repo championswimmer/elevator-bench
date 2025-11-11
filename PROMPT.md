@@ -34,6 +34,8 @@ For the purpose of this simulation we will consider this configuration as defaul
 Create 3 main files: 
 
 1. index.html - This file will contain the HTML structure of the simulator. You can create divs for floors, elevators, and buttons here if you need.
+  1. Include the model, tool, and provider information from info.json
+  at the top after title in this HTML page.
 
 2. styles.css - This file will contain the CSS styles for the simulator to make it visually appealing. Use plain CSS, no SASS/SCSS.
 
@@ -48,8 +50,9 @@ We want this project to run & build using bun, without any package.json or node_
 We should be able to run the project using:
 
 ```sh 
-bun ./index.html
+bunx serve -p XXXX
 ```
+Where port number `XXXX` is picked from info.json 
 
 We should be able to build the project using:
 ```sh

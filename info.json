@@ -1,6 +1,7 @@
 {
   "config": {
     "tool": "cursor | copilot | kilo ",
+    "tool_mode": "standard | orchestrator | plan | code",
     "model": "claudecode-45 | gpt-5 | minimax-m2",
     "provider": "openrouter-default",
     "port": "8345"

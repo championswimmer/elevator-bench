@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elevator Simulator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🏢 Elevator Simulator</h1>
+      
+      <div class="info-box">
+        <h3>Configuration Details</h3>
+        <div class="info-row">
+          <div class="info-item">
+            <span class="info-label">Tool:</span>
+            <span class="info-value">copilot</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Tool Mode:</span>
+            <span class="info-value">agent</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Model:</span>
+            <span class="info-value">claude-sonnet-4.5</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Provider:</span>
+            <span class="info-value">copilot-default</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="simulation-area">
+        <div id="floors-container"></div>
+        <div id="shaft-container"></div>
+      </div>
+
+      <div class="control-area" id="control-panels"></div>
+    </main>
+
+    <footer>
+      <p>Use floor buttons (↑/↓) to call elevators | Use control panels to select destination floors</p>
+      <p>Elevators: Green = Idle | Blue = Moving | Orange = Stopped at Floor</p>
+    </footer>
+  </div>
+
+  <script type="module" src="script.ts"></script>
+</body>
+</html>
