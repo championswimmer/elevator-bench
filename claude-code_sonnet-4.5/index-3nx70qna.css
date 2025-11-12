@@ -1,0 +1,281 @@
+/* styles.css */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: #333;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  padding: 20px;
+  font-family: Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+header {
+  background: #fff;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  padding: 20px;
+  box-shadow: 0 4px 6px #0000001a;
+}
+
+h1 {
+  color: #667eea;
+  margin-bottom: 10px;
+  font-size: 28px;
+}
+
+.info {
+  background: #f8f9fa;
+  border-left: 4px solid #667eea;
+  border-radius: 8px;
+  padding: 15px;
+}
+
+.info h2 {
+  color: #667eea;
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+
+.info p {
+  color: #555;
+  margin: 4px 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+#simulator-container {
+  display: flex;
+  background: #fff;
+  border-radius: 10px;
+  gap: 20px;
+  margin-bottom: 20px;
+  padding: 30px;
+  box-shadow: 0 4px 6px #0000001a;
+}
+
+.building {
+  display: flex;
+  border-right: 3px solid #ddd;
+  flex-direction: column;
+  padding-right: 20px;
+}
+
+.floor {
+  display: flex;
+  border-bottom: 2px solid #ddd;
+  align-items:  center;
+  gap: 15px;
+  height: 80px;
+  padding: 0 15px;
+}
+
+.floor:first-child {
+  border-top: 2px solid #ddd;
+}
+
+.floor-label {
+  color: #555;
+  min-width: 70px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.floor-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.floor-button {
+  color: #667eea;
+  cursor: pointer;
+  background: #fff;
+  border: 2px solid #667eea;
+  border-radius: 8px;
+  width: 40px;
+  height: 40px;
+  transition: all .3s;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.floor-button:hover {
+  color: #fff;
+  background: #667eea;
+  transform: scale(1.05);
+}
+
+.floor-button.pressed {
+  color: #fff;
+  animation: pulse 1s infinite;
+  background: #667eea;
+  box-shadow: 0 0 15px #667eea80;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 15px #667eea80;
+  }
+
+  50% {
+    box-shadow: 0 0 25px #667eeacc;
+  }
+}
+
+.elevator-shafts {
+  display: flex;
+  flex: 1;
+  gap: 15px;
+  padding-left: 20px;
+}
+
+.elevator-shaft {
+  position: relative;
+  background: linear-gradient(#f0f0f0 0%, #e0e0e0 100%);
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  flex: 1;
+  min-height: 800px;
+}
+
+.elevator {
+  position: absolute;
+  display: flex;
+  color: #fff;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: 3px solid #333;
+  border-radius: 8px;
+  flex-direction: column;
+  justify-content: center;
+  align-items:  center;
+  height: 75px;
+  padding: 8px;
+  transition: bottom 1s linear;
+  bottom: 0;
+  left: 5px;
+  right: 5px;
+  box-shadow: 0 4px 8px #0000004d;
+}
+
+.elevator-label {
+  margin-bottom: 4px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.elevator-floor {
+  margin-bottom: 2px;
+  font-size: 12px;
+}
+
+.elevator-status {
+  margin-bottom: 2px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.elevator-destinations {
+  opacity: .9;
+  font-size: 10px;
+}
+
+#control-panels {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.control-panel {
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 6px #0000001a;
+}
+
+.panel-title {
+  color: #667eea;
+  text-align: center;
+  border-bottom: 2px solid #e0e0e0;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.panel-buttons {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+
+.panel-button {
+  aspect-ratio: 1;
+  color: #764ba2;
+  cursor: pointer;
+  background: #fff;
+  border: 2px solid #764ba2;
+  border-radius: 8px;
+  width: 100%;
+  transition: all .2s;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.panel-button:hover {
+  color: #fff;
+  background: #764ba2;
+  transform: scale(1.08);
+}
+
+.panel-button:active {
+  transform: scale(.95);
+}
+
+@media (max-width: 1200px) {
+  #simulator-container {
+    flex-direction: column;
+  }
+
+  .building {
+    border-bottom: 3px solid #ddd;
+    border-right: none;
+    padding-bottom: 20px;
+    padding-right: 0;
+  }
+
+  .elevator-shafts {
+    min-height: 400px;
+    padding-top: 20px;
+    padding-left: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .floor {
+    height: 60px;
+    padding: 0 10px;
+  }
+
+  .floor-button {
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
+  }
+
+  .elevator {
+    height: 55px;
+  }
+
+  #control-panels {
+    grid-template-columns: 1fr;
+  }
+}
