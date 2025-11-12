@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elevator Simulator</title>
+    <meta name="description" content="Interactive elevator simulator with 4 elevators and 10 floors">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <h1>Elevator Simulator</h1>
+        <div class="model-info">
+            <p><strong>Tool:</strong> kilo</p>
+            <p><strong>Tool Mode:</strong> orchestrator</p>
+            <p><strong>Model:</strong> kimi-k2-0905</p>
+            <p><strong>Provider:</strong> openrouter-default</p>
+            <p><strong>Port:</strong> 8470</p>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <div class="building-visualization">
+            <!-- Floors 9 to 0 (top to bottom) -->
+            <div class="floor" data-floor="9">
+                <div class="floor-controls">
+                    <button class="floor-button floor-button-down" aria-label="Call elevator down from floor 9">▼</button>
+                </div>
+                <div class="floor-label">Floor 9</div>
+                <div class="elevator-shafts">
+                    <div class="elevator-shaft" data-elevator="0"></div>
+                    <div class="elevator-shaft" data-elevator="1"></div>
+                    <div class="elevator-shaft" data-elevator="2"></div>
+                    <div class="elevator-shaft" data-elevator="3"></div>
+                </div>
+            </div>
+
+            <div class="floor" data-floor="8">
+                <div class="floor-controls">
+                    <button class="floor-button floor-button-up" aria-label="Call elevator up from floor 8">▲</button>
+                    <button class="floor-button floor-button-down" aria-label="Call elevator down from floor 8">▼</button>
+                </div>
+                <div class="floor-label">Floor 8</div>
+                <div class="elevator-shafts">
+                    <div class="elevator-shaft" data-elevator="0"></div>
+                    <div class="elevator-shaft" data-elevator="1"></div>
+                    <div class="elevator-shaft" data-elevator="2"></div>
+                    <div class="elevator-shaft" data-elevator="3"></div>
+                </div>
+            </div>
+
+            <div class="floor" data-floor="7">
+                <div class="floor-controls">
+                    <button class="floor-button floor-button-up" aria-label="Call elevator up from floor 7">▲</button>
+                    <button class="floor-button floor-button-down" aria-label="Call elevator down from floor 7">▼</button>
+                </div>
+                <div class="floor-label">Floor 7</div>
+                <div class="elevator-shafts">
+                    <div class="elevator-shaft" data-elevator="0"></div>
+                    <div class="elevator-shaft" data-elevator="1"></div>
+                    <div class="elevator-shaft" data-elevator="2"></div>
+                    <div class="elevator-shaft" data-elevator="3"></div>
+                </div>
+            </div>
+
+            <div class="floor" data-floor="6">
+                <div class="floor-controls">
+                    <button class="floor-button floor-button-up" aria-label="Call elevator up from floor 6">▲</button>
+                    <button class="floor-button floor-button-down" aria-label="Call elevator down from floor 6">▼</button>
+                </div>
+                <div class="floor-label">Floor 6</div>
+                <div class="elevator-shafts">
+                    <div class="elevator-shaft" data-elevator="0"></div>
+                    <div class="elevator-shaft" data-elevator="1"></div>
+                    <div class="elevator-shaft" data-elevator="2"></div>
+                    <div class="elevator-shaft" data-elevator="3"></div>
+                </div>
+            </div>
+
+            <div class="floor" data-floor="5">
+                <div class="floor-controls">
+                    <button class="floor-button floor-button-up" aria-label="Call elevator up from floor 5">▲</button>
+                    <button class="floor-button floor-button-down" aria-label="Call elevator down from floor 5">▼</button>
+                </div>
+                <div class="floor-label">Floor 5</div>
+                <div class="elevator-shafts">
+                    <div class="elevator-shaft" data-elevator="0"></div>
+                    <div class="elevator-shaft" data-elevator="1"></div>
+                    <div class="elevator-shaft" data-elevator="2"></div>
+                    <div class="elevator-shaft" data-elevator="3"></div>
+                </div>
+            </div>
+
+            <div class="floor" data-floor="4">
+                <div class="floor-controls">
+                    <button class="floor-button floor-button-up" aria-label="Call elevator up from floor 4">▲</button>
+                    <button class="floor-button floor-button-down" aria-label="Call elevator down from floor 4">▼</button>
+                </div>
+                <div class="floor-label">Floor 4</div>
+                <div class="elevator-shafts">
+                    <div class="elevator-shaft" data-elevator="0"></div>
+                    <div class="elevator-shaft" data-elevator="1"></div>
+                    <div class="elevator-shaft" data-elevator="2"></div>
+                    <div class="elevator-shaft" data-elevator="3"></div>
+                </div>
+            </div>
+
+            <div class="floor" data-floor="3">
+                <div class="floor-controls">
+                    <button class="floor-button floor-button-up" aria-label="Call elevator up from floor 3">▲</button>
+                    <button class="floor-button floor-button-down" aria-label="Call elevator down from floor 3">▼</button>
+                </div>
+                <div class="floor-label">Floor 3</div>
+                <div class="elevator-shafts">
+                    <div class="elevator-shaft" data-elevator="0"></div>
+                    <div class="elevator-shaft" data-elevator="1"></div>
+                    <div class="elevator-shaft" data-elevator="2"></div>
+                    <div class="elevator-shaft" data-elevator="3"></div>
+                </div>
+            </div>
+
+            <div class="floor" data-floor="2">
+                <div class="floor-controls">
+                    <button class="floor-button floor-button-up" aria-label="Call elevator up from floor 2">▲</button>
+                    <button class="floor-button floor-button-down" aria-label="Call elevator down from floor 2">▼</button>
+                </div>
+                <div class="floor-label">Floor 2</div>
+                <div class="elevator-shafts">
+                    <div class="elevator-shaft" data-elevator="0"></div>
+                    <div class="elevator-shaft" data-elevator="1"></div>
+                    <div class="elevator-shaft" data-elevator="2"></div>
+                    <div class="elevator-shaft" data-elevator="3"></div>
+                </div>
+            </div>
+
+            <div class="floor" data-floor="1">
+                <div class="floor-controls">
+                    <button class="floor-button floor-button-up" aria-label="Call elevator up from floor 1">▲</button>
+                    <button class="floor-button floor-button-down" aria-label="Call elevator down from floor 1">▼</button>
+                </div>
+                <div class="floor-label">Floor 1</div>
+                <div class="elevator-shafts">
+                    <div class="elevator-shaft" data-elevator="0"></div>
+                    <div class="elevator-shaft" data-elevator="1"></div>
+                    <div class="elevator-shaft" data-elevator="2"></div>
+                    <div class="elevator-shaft" data-elevator="3"></div>
+                </div>
+            </div>
+
+            <div class="floor" data-floor="0">
+                <div class="floor-controls">
+                    <button class="floor-button floor-button-up" aria-label="Call elevator up from floor 0">▲</button>
+                </div>
+                <div class="floor-label">Floor 0 (Ground)</div>
+                <div class="elevator-shafts">
+                    <div class="elevator-shaft" data-elevator="0">
+                        <div class="elevator" data-elevator="0">
+                            <div class="elevator-buttons">
+                                <button class="elevator-button" data-floor="0">0</button>
+                                <button class="elevator-button" data-floor="1">1</button>
+                                <button class="elevator-button" data-floor="2">2</button>
+                                <button class="elevator-button" data-floor="3">3</button>
+                                <button class="elevator-button" data-floor="4">4</button>
+                                <button class="elevator-button" data-floor="5">5</button>
+                                <button class="elevator-button" data-floor="6">6</button>
+                                <button class="elevator-button" data-floor="7">7</button>
+                                <button class="elevator-button" data-floor="8">8</button>
+                                <button class="elevator-button" data-floor="9">9</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="elevator-shaft" data-elevator="1">
+                        <div class="elevator" data-elevator="1">
+                            <div class="elevator-buttons">
+                                <button class="elevator-button" data-floor="0">0</button>
+                                <button class="elevator-button" data-floor="1">1</button>
+                                <button class="elevator-button" data-floor="2">2</button>
+                                <button class="elevator-button" data-floor="3">3</button>
+                                <button class="elevator-button" data-floor="4">4</button>
+                                <button class="elevator-button" data-floor="5">5</button>
+                                <button class="elevator-button" data-floor="6">6</button>
+                                <button class="elevator-button" data-floor="7">7</button>
+                                <button class="elevator-button" data-floor="8">8</button>
+                                <button class="elevator-button" data-floor="9">9</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="elevator-shaft" data-elevator="2">
+                        <div class="elevator" data-elevator="2">
+                            <div class="elevator-buttons">
+                                <button class="elevator-button" data-floor="0">0</button>
+                                <button class="elevator-button" data-floor="1">1</button>
+                                <button class="elevator-button" data-floor="2">2</button>
+                                <button class="elevator-button" data-floor="3">3</button>
+                                <button class="elevator-button" data-floor="4">4</button>
+                                <button class="elevator-button" data-floor="5">5</button>
+                                <button class="elevator-button" data-floor="6">6</button>
+                                <button class="elevator-button" data-floor="7">7</button>
+                                <button class="elevator-button" data-floor="8">8</button>
+                                <button class="elevator-button" data-floor="9">9</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="elevator-shaft" data-elevator="3">
+                        <div class="elevator" data-elevator="3">
+                            <div class="elevator-buttons">
+                                <button class="elevator-button" data-floor="0">0</button>
+                                <button class="elevator-button" data-floor="1">1</button>
+                                <button class="elevator-button" data-floor="2">2</button>
+                                <button class="elevator-button" data-floor="3">3</button>
+                                <button class="elevator-button" data-floor="4">4</button>
+                                <button class="elevator-button" data-floor="5">5</button>
+                                <button class="elevator-button" data-floor="6">6</button>
+                                <button class="elevator-button" data-floor="7">7</button>
+                                <button class="elevator-button" data-floor="8">8</button>
+                                <button class="elevator-button" data-floor="9">9</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="dist/script.js"></script>
+    <script src="comprehensive-test.js"></script>
+</body>
+</html>

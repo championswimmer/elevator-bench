@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elevator Simulator - minimax-m2 (OpenRouter Provider)</title>
+    <meta name="model" content="minimax-m2">
+    <meta name="tool" content="kilo">
+    <meta name="provider" content="openrouter-default">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Elevator Simulator</h1>
+            <div class="stats">
+                <span>Port: 8322</span>
+                <span>Tool: kilo</span>
+                <span>Mode: orchestrator</span>
+                <span>Model: minimax-m2</span>
+            </div>
+        </header>
+
+        <div class="simulator-container">
+            <!-- Building Structure -->
+            <div class="building" id="building">
+                <div class="floor-controls">
+                    <!-- Floor request buttons will be generated here -->
+                </div>
+                
+                <div class="elevators-container">
+                    <!-- Elevators will be generated here -->
+                </div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <div class="control-section">
+                <h3>Simulation Controls</h3>
+                <button id="startBtn" class="btn btn-primary">Start Simulation</button>
+                <button id="resetBtn" class="btn btn-secondary">Reset</button>
+                <button id="emergencyBtn" class="btn btn-danger">Emergency Stop</button>
+            </div>
+            
+            <div class="control-section">
+                <h3>Settings</h3>
+                <label>Floors: 
+                    <input type="number" id="floorsInput" min="3" max="20" value="10">
+                </label>
+                <label>Elevators: 
+                    <input type="number" id="elevatorsInput" min="1" max="8" value="4">
+                </label>
+                <label>Speed: 
+                    <select id="speedSelect">
+                        <option value="1000">Slow</option>
+                        <option value="500" selected>Normal</option>
+                        <option value="250">Fast</option>
+                        <option value="100">Very Fast</option>
+                    </select>
+                </label>
+            </div>
+        </div>
+
+        <div class="log-container">
+            <h3>Simulation Log</h3>
+            <div id="log" class="log"></div>
+        </div>
+    </div>
+
+    <script type="module" src="script.ts"></script>
+</body>
+</html>

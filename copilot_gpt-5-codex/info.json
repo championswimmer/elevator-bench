@@ -1,0 +1,17 @@
+{
+  "config": {
+    "tool": "copilot",
+    "tool_mode": "agent",
+    "model": "gpt-5-codex",
+    "provider": "openrouter-default",
+    "port": "8665"
+  },
+  "results": {
+    "context_window": "256000",
+    "context_fill": "41756",
+    "dollar_cost": "9x",
+    "time_taken": "00:10:00",
+    "tokens_sent": "",
+    "tokens_received": ""
+  }
+}

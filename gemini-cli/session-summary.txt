@@ -1,0 +1,24 @@
+│  Agent powering down. Goodbye!                                                                                                                                          │
+│                                                                                                                                                                         │
+│  Interaction Summary                                                                                                                                                    │
+│  Session ID:                 ec17aaff-4f27-4f98-a6cc-351014929650                                                                                                       │
+│  Tool Calls:                 15 ( ✓ 15 x 0 )                                                                                                                            │
+│  Success Rate:               100.0%                                                                                                                                     │
+│  User Agreement:             100.0% (15 reviewed)                                                                                                                       │
+│  Code Changes:               +559 -57                                                                                                                                   │
+│                                                                                                                                                                         │
+│  Performance                                                                                                                                                            │
+│  Wall Time:                  4m 53s                                                                                                                                     │
+│  Agent Active:               3m 14s                                                                                                                                     │
+│    » API Time:               3m 8s (97.1%)                                                                                                                              │
+│    » Tool Time:              5.7s (2.9%)                                                                                                                                │
+│                                                                                                                                                                         │
+│                                                                                                                                                                         │
+│  Model Usage                  Reqs   Input Tokens  Output Tokens                                                                                                        │
+│  ───────────────────────────────────────────────────────────────                                                                                                        │
+│  gemini-2.5-pro                 16        196,205          8,155                                                                                                        │
+│                                                                                                                                                                         │
+│  Savings Highlight: 151,862 (77.4%) of input tokens were served from the cache, reducing costs.                                                                         │
+│                                                                                                                                                                         │
+│  » Tip: For a full token breakdown, run `/stats model`.                                                                                                                 │
+│

@@ -1,0 +1,17 @@
+{
+  "config": {
+    "tool": "kilo",
+    "tool_mode": "orchestrator",
+    "model": "minimax-m2",
+    "provider": "openrouter-default",
+    "port": "8322"
+  },
+  "results": {
+    "context_window": "204800",
+    "context_fill": "40800",
+    "dollar_cost": "0.19",
+    "time_taken": "00:05:45",
+    "tokens_sent": "668900",
+    "tokens_received": "16900"
+  }
+}

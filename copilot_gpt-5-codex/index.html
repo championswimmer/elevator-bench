@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Elevator Simulator</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <header class="page-header">
+        <h1>Elevator Simulator</h1>
+        <p class="model-meta">
+          Model: gpt-5-codex · Tool: copilot (agent) · Provider: openrouter-default
+        </p>
+        <p class="description">
+          Interact with the floor call buttons on the left or the in-car panels on the right to
+          watch the elevators schedule their trips. Defaults: 10 floors, 4 elevators.
+        </p>
+      </header>
+      <section
+        id="simulator-root"
+        class="simulator-root"
+        data-floors="10"
+        data-elevators="4"
+      ></section>
+    </main>
+    <script type="module" src="./script.ts"></script>
+  </body>
+</html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elevator Simulator</title>
+  <meta name="description" content="Elevator Simulator - Model: glm-4.6, Tool: kilo, Provider: openrouter-default">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Elevator Simulator</h1>
+    <p>Model: glm-4.6 | Tool: kilo | Provider: openrouter-default</p>
+  </header>
+
+  <main>
+    <div class="container">
+      <!-- Building section with floors -->
+      <section class="building" id="building">
+        <h2>Building</h2>
+        <!-- Floors will be displayed from 9 to 0 -->
+        <div class="floors" id="floors">
+          <!-- Floor 9 -->
+          <div class="floor" id="floor-9" data-floor="9">
+            <div class="floor-info">
+              <span class="floor-number">Floor 9</span>
+              <button class="floor-button up" aria-label="Up button for floor 9" disabled>↑</button>
+              <button class="floor-button down" aria-label="Down button for floor 9" data-direction="down">↓</button>
+            </div>
+          </div>
+          
+          <!-- Floor 8 -->
+          <div class="floor" id="floor-8" data-floor="8">
+            <div class="floor-info">
+              <span class="floor-number">Floor 8</span>
+              <button class="floor-button up" aria-label="Up button for floor 8" data-direction="up">↑</button>
+              <button class="floor-button down" aria-label="Down button for floor 8" data-direction="down">↓</button>
+            </div>
+          </div>
+          
+          <!-- Floor 7 -->
+          <div class="floor" id="floor-7" data-floor="7">
+            <div class="floor-info">
+              <span class="floor-number">Floor 7</span>
+              <button class="floor-button up" aria-label="Up button for floor 7" data-direction="up">↑</button>
+              <button class="floor-button down" aria-label="Down button for floor 7" data-direction="down">↓</button>
+            </div>
+          </div>
+          
+          <!-- Floor 6 -->
+          <div class="floor" id="floor-6" data-floor="6">
+            <div class="floor-info">
+              <span class="floor-number">Floor 6</span>
+              <button class="floor-button up" aria-label="Up button for floor 6" data-direction="up">↑</button>
+              <button class="floor-button down" aria-label="Down button for floor 6" data-direction="down">↓</button>
+            </div>
+          </div>
+          
+          <!-- Floor 5 -->
+          <div class="floor" id="floor-5" data-floor="5">
+            <div class="floor-info">
+              <span class="floor-number">Floor 5</span>
+              <button class="floor-button up" aria-label="Up button for floor 5" data-direction="up">↑</button>
+              <button class="floor-button down" aria-label="Down button for floor 5" data-direction="down">↓</button>
+            </div>
+          </div>
+          
+          <!-- Floor 4 -->
+          <div class="floor" id="floor-4" data-floor="4">
+            <div class="floor-info">
+              <span class="floor-number">Floor 4</span>
+              <button class="floor-button up" aria-label="Up button for floor 4" data-direction="up">↑</button>
+              <button class="floor-button down" aria-label="Down button for floor 4" data-direction="down">↓</button>
+            </div>
+          </div>
+          
+          <!-- Floor 3 -->
+          <div class="floor" id="floor-3" data-floor="3">
+            <div class="floor-info">
+              <span class="floor-number">Floor 3</span>
+              <button class="floor-button up" aria-label="Up button for floor 3" data-direction="up">↑</button>
+              <button class="floor-button down" aria-label="Down button for floor 3" data-direction="down">↓</button>
+            </div>
+          </div>
+          
+          <!-- Floor 2 -->
+          <div class="floor" id="floor-2" data-floor="2">
+            <div class="floor-info">
+              <span class="floor-number">Floor 2</span>
+              <button class="floor-button up" aria-label="Up button for floor 2" data-direction="up">↑</button>
+              <button class="floor-button down" aria-label="Down button for floor 2" data-direction="down">↓</button>
+            </div>
+          </div>
+          
+          <!-- Floor 1 -->
+          <div class="floor" id="floor-1" data-floor="1">
+            <div class="floor-info">
+              <span class="floor-number">Floor 1</span>
+              <button class="floor-button up" aria-label="Up button for floor 1" data-direction="up">↑</button>
+              <button class="floor-button down" aria-label="Down button for floor 1" data-direction="down">↓</button>
+            </div>
+          </div>
+          
+          <!-- Floor 0 -->
+          <div class="floor" id="floor-0" data-floor="0">
+            <div class="floor-info">
+              <span class="floor-number">Floor 0</span>
+              <button class="floor-button up" aria-label="Up button for floor 0" data-direction="up">↑</button>
+              <button class="floor-button down" aria-label="Down button for floor 0" disabled>↓</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Elevator shafts section -->
+      <section class="elevator-shafts" id="elevator-shafts">
+        <h2>Elevator Shafts</h2>
+        <div class="shafts-container">
+          <!-- Elevator 0 -->
+          <div class="elevator-shaft" id="elevator-shaft-0">
+            <div class="elevator" id="elevator-0" data-elevator="0">
+              <div class="elevator-id">Elevator 0</div>
+              <div class="elevator-floor">Floor: <span id="elevator-0-floor">0</span></div>
+              <div class="elevator-direction">Direction: <span id="elevator-0-direction">idle</span></div>
+            </div>
+          </div>
+          
+          <!-- Elevator 1 -->
+          <div class="elevator-shaft" id="elevator-shaft-1">
+            <div class="elevator" id="elevator-1" data-elevator="1">
+              <div class="elevator-id">Elevator 1</div>
+              <div class="elevator-floor">Floor: <span id="elevator-1-floor">0</span></div>
+              <div class="elevator-direction">Direction: <span id="elevator-1-direction">idle</span></div>
+            </div>
+          </div>
+          
+          <!-- Elevator 2 -->
+          <div class="elevator-shaft" id="elevator-shaft-2">
+            <div class="elevator" id="elevator-2" data-elevator="2">
+              <div class="elevator-id">Elevator 2</div>
+              <div class="elevator-floor">Floor: <span id="elevator-2-floor">0</span></div>
+              <div class="elevator-direction">Direction: <span id="elevator-2-direction">idle</span></div>
+            </div>
+          </div>
+          
+          <!-- Elevator 3 -->
+          <div class="elevator-shaft" id="elevator-shaft-3">
+            <div class="elevator" id="elevator-3" data-elevator="3">
+              <div class="elevator-id">Elevator 3</div>
+              <div class="elevator-floor">Floor: <span id="elevator-3-floor">0</span></div>
+              <div class="elevator-direction">Direction: <span id="elevator-3-direction">idle</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Control panel section -->
+      <section class="control-panels" id="control-panels">
+        <h2>Control Panels</h2>
+        <!-- Elevator 0 Control Panel -->
+        <div class="control-panel" id="control-panel-0" data-elevator="0">
+          <h3>Elevator 0 Controls</h3>
+          <div class="button-grid">
+            <button class="elevator-button" data-floor="0" aria-label="Elevator 0 to floor 0">0</button>
+            <button class="elevator-button" data-floor="1" aria-label="Elevator 0 to floor 1">1</button>
+            <button class="elevator-button" data-floor="2" aria-label="Elevator 0 to floor 2">2</button>
+            <button class="elevator-button" data-floor="3" aria-label="Elevator 0 to floor 3">3</button>
+            <button class="elevator-button" data-floor="4" aria-label="Elevator 0 to floor 4">4</button>
+            <button class="elevator-button" data-floor="5" aria-label="Elevator 0 to floor 5">5</button>
+            <button class="elevator-button" data-floor="6" aria-label="Elevator 0 to floor 6">6</button>
+            <button class="elevator-button" data-floor="7" aria-label="Elevator 0 to floor 7">7</button>
+            <button class="elevator-button" data-floor="8" aria-label="Elevator 0 to floor 8">8</button>
+            <button class="elevator-button" data-floor="9" aria-label="Elevator 0 to floor 9">9</button>
+          </div>
+        </div>
+        
+        <!-- Elevator 1 Control Panel -->
+        <div class="control-panel" id="control-panel-1" data-elevator="1">
+          <h3>Elevator 1 Controls</h3>
+          <div class="button-grid">
+            <button class="elevator-button" data-floor="0" aria-label="Elevator 1 to floor 0">0</button>
+            <button class="elevator-button" data-floor="1" aria-label="Elevator 1 to floor 1">1</button>
+            <button class="elevator-button" data-floor="2" aria-label="Elevator 1 to floor 2">2</button>
+            <button class="elevator-button" data-floor="3" aria-label="Elevator 1 to floor 3">3</button>
+            <button class="elevator-button" data-floor="4" aria-label="Elevator 1 to floor 4">4</button>
+            <button class="elevator-button" data-floor="5" aria-label="Elevator 1 to floor 5">5</button>
+            <button class="elevator-button" data-floor="6" aria-label="Elevator 1 to floor 6">6</button>
+            <button class="elevator-button" data-floor="7" aria-label="Elevator 1 to floor 7">7</button>
+            <button class="elevator-button" data-floor="8" aria-label="Elevator 1 to floor 8">8</button>
+            <button class="elevator-button" data-floor="9" aria-label="Elevator 1 to floor 9">9</button>
+          </div>
+        </div>
+        
+        <!-- Elevator 2 Control Panel -->
+        <div class="control-panel" id="control-panel-2" data-elevator="2">
+          <h3>Elevator 2 Controls</h3>
+          <div class="button-grid">
+            <button class="elevator-button" data-floor="0" aria-label="Elevator 2 to floor 0">0</button>
+            <button class="elevator-button" data-floor="1" aria-label="Elevator 2 to floor 1">1</button>
+            <button class="elevator-button" data-floor="2" aria-label="Elevator 2 to floor 2">2</button>
+            <button class="elevator-button" data-floor="3" aria-label="Elevator 2 to floor 3">3</button>
+            <button class="elevator-button" data-floor="4" aria-label="Elevator 2 to floor 4">4</button>
+            <button class="elevator-button" data-floor="5" aria-label="Elevator 2 to floor 5">5</button>
+            <button class="elevator-button" data-floor="6" aria-label="Elevator 2 to floor 6">6</button>
+            <button class="elevator-button" data-floor="7" aria-label="Elevator 2 to floor 7">7</button>
+            <button class="elevator-button" data-floor="8" aria-label="Elevator 2 to floor 8">8</button>
+            <button class="elevator-button" data-floor="9" aria-label="Elevator 2 to floor 9">9</button>
+          </div>
+        </div>
+        
+        <!-- Elevator 3 Control Panel -->
+        <div class="control-panel" id="control-panel-3" data-elevator="3">
+          <h3>Elevator 3 Controls</h3>
+          <div class="button-grid">
+            <button class="elevator-button" data-floor="0" aria-label="Elevator 3 to floor 0">0</button>
+            <button class="elevator-button" data-floor="1" aria-label="Elevator 3 to floor 1">1</button>
+            <button class="elevator-button" data-floor="2" aria-label="Elevator 3 to floor 2">2</button>
+            <button class="elevator-button" data-floor="3" aria-label="Elevator 3 to floor 3">3</button>
+            <button class="elevator-button" data-floor="4" aria-label="Elevator 3 to floor 4">4</button>
+            <button class="elevator-button" data-floor="5" aria-label="Elevator 3 to floor 5">5</button>
+            <button class="elevator-button" data-floor="6" aria-label="Elevator 3 to floor 6">6</button>
+            <button class="elevator-button" data-floor="7" aria-label="Elevator 3 to floor 7">7</button>
+            <button class="elevator-button" data-floor="8" aria-label="Elevator 3 to floor 8">8</button>
+            <button class="elevator-button" data-floor="9" aria-label="Elevator 3 to floor 9">9</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Status display section -->
+      <section class="status-display" id="status-display">
+        <h2>System Status</h2>
+        <div class="status-content">
+          <div class="status-item">
+            <span class="status-label">Active Requests:</span>
+            <span id="active-requests">0</span>
+          </div>
+          <div class="status-item">
+            <span class="status-label">Total Floors:</span>
+            <span id="total-floors">10</span>
+          </div>
+          <div class="status-item">
+            <span class="status-label">Total Elevators:</span>
+            <span id="total-elevators">4</span>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script src="script.ts" type="module"></script>
+</body>
+</html>

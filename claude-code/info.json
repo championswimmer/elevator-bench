@@ -1,0 +1,17 @@
+{
+  "config": {
+    "tool": "claude-code",
+    "tool_mode": "standard",
+    "model": "claude-sonnet-4.5",
+    "provider": "anthropic-default",
+    "port": "8037"
+  },
+  "results": {
+    "context_window": "",
+    "context_fill": "",
+    "dollar_cost": "0.45",
+    "time_taken": "00:08:09",
+    "tokens_sent": "",
+    "tokens_received": ""
+  }
+}

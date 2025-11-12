@@ -1,0 +1,439 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #333;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Header styles */
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 20px;
+}
+
+header h1 {
+    color: #2c3e50;
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.stats {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.stats span {
+    background: linear-gradient(45deg, #3498db, #2980b9);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Simulator container */
+.simulator-container {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.building {
+    display: flex;
+    gap: 30px;
+    min-height: 600px;
+    position: relative;
+}
+
+/* Floor controls */
+.floor-controls {
+    width: 120px;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 5px;
+    background: linear-gradient(180deg, #34495e, #2c3e50);
+    border-radius: 10px;
+    padding: 20px 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.floor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    min-height: 45px;
+    justify-content: center;
+}
+
+.floor-label {
+    color: white;
+    font-weight: bold;
+    font-size: 0.9rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.floor-btn {
+    width: 30px;
+    height: 25px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.7rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.floor-btn.up {
+    background: linear-gradient(45deg, #27ae60, #2ecc71);
+    color: white;
+}
+
+.floor-btn.down {
+    background: linear-gradient(45deg, #e74c3c, #c0392b);
+    color: white;
+}
+
+.floor-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.floor-btn:active {
+    transform: scale(0.95);
+}
+
+.floor-btn.active {
+    animation: pulse 0.5s infinite alternate;
+}
+
+/* Elevators container */
+.elevators-container {
+    flex: 1;
+    display: flex;
+    gap: 15px;
+    justify-content: space-around;
+    align-items: flex-start;
+    padding: 20px;
+    background: linear-gradient(180deg, #ecf0f1, #bdc3c7);
+    border-radius: 10px;
+    position: relative;
+    min-height: 600px;
+}
+
+.elevator-shaft {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 2px;
+    width: 80px;
+    background: #34495e;
+    border-radius: 8px;
+    padding: 10px 5px;
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.elevator {
+    width: 60px;
+    height: 50px;
+    border-radius: 8px;
+    border: 2px solid #2c3e50;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.8rem;
+    position: relative;
+    transition: all 0.5s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.elevator.idle {
+    background: linear-gradient(45deg, #95a5a6, #7f8c8d);
+    color: white;
+}
+
+.elevator.moving {
+    background: linear-gradient(45deg, #3498db, #2980b9);
+    color: white;
+}
+
+.elevator.busy {
+    background: linear-gradient(45deg, #f39c12, #e67e22);
+    color: white;
+}
+
+.elevator.emergency {
+    background: linear-gradient(45deg, #e74c3c, #c0392b);
+    color: white;
+    animation: shake 0.5s infinite;
+}
+
+.elevator-cabin {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+}
+
+.elevator-number {
+    font-size: 0.9rem;
+    margin-bottom: 2px;
+}
+
+.elevator-floor {
+    font-size: 0.7rem;
+    opacity: 0.8;
+}
+
+.elevator-status {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 0.6rem;
+    white-space: nowrap;
+}
+
+/* Controls section */
+.controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.control-section {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.control-section h3 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.control-section label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.control-section input,
+.control-section select {
+    margin-left: 10px;
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background: white;
+}
+
+/* Buttons */
+.btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    margin: 5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, #3498db, #2980b9);
+    color: white;
+}
+
+.btn-secondary {
+    background: linear-gradient(45deg, #95a5a6, #7f8c8d);
+    color: white;
+}
+
+.btn-danger {
+    background: linear-gradient(45deg, #e74c3c, #c0392b);
+    color: white;
+}
+
+/* Log container */
+.log-container {
+    background: #2c3e50;
+    border-radius: 10px;
+    padding: 20px;
+    color: white;
+}
+
+.log-container h3 {
+    color: #ecf0f1;
+    margin-bottom: 15px;
+}
+
+.log {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    padding: 15px;
+    height: 200px;
+    overflow-y: auto;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.log-entry {
+    margin-bottom: 5px;
+    padding: 2px 0;
+}
+
+.log-entry.elevator {
+    color: #3498db;
+}
+
+.log-entry.request {
+    color: #f39c12;
+}
+
+.log-entry.error {
+    color: #e74c3c;
+}
+
+.log-entry.success {
+    color: #2ecc71;
+}
+
+/* Animations */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.05); }
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-2px); }
+    50% { transform: translateX(2px); }
+    75% { transform: translateX(-1px); }
+    100% { transform: translateX(0); }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Responsive design */
+@media (max-width: 1200px) {
+    .controls {
+        grid-template-columns: 1fr;
+    }
+    
+    .building {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .floor-controls {
+        flex-direction: row;
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    .stats {
+        gap: 10px;
+    }
+    
+    .stats span {
+        font-size: 0.8rem;
+        padding: 6px 12px;
+    }
+    
+    .elevators-container {
+        padding: 10px;
+    }
+    
+    .elevator-shaft {
+        width: 60px;
+    }
+    
+    .elevator {
+        width: 40px;
+        height: 35px;
+    }
+}

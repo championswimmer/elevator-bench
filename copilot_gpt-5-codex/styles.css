@@ -1,0 +1,256 @@
+:root {
+  color-scheme: light dark;
+  font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: #0f172a;
+  color: #e2e8f0;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+.page {
+  margin: 0 auto;
+  max-width: 1100px;
+  padding: 2.5rem 1.5rem 3rem;
+}
+
+.page-header {
+  margin-bottom: 2rem;
+}
+
+.page-header h1 {
+  margin: 0;
+  font-size: clamp(2rem, 2.6vw, 3rem);
+  color: #38bdf8;
+}
+
+.model-meta {
+  margin: 0.5rem 0 0;
+  font-size: 0.95rem;
+  color: #94a3b8;
+}
+
+.description {
+  margin: 0.75rem 0 0;
+  max-width: 56ch;
+  color: #cbd5f5;
+}
+
+.simulator-root {
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 1rem;
+  padding: 1.5rem;
+}
+
+.simulator-grid {
+  display: grid;
+  grid-template-columns: minmax(320px, 1fr) minmax(260px, 320px);
+  gap: 2rem;
+}
+
+.visual-area {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-end;
+}
+
+.floors-column,
+.shaft-area {
+  height: calc(var(--floor-count) * var(--floor-height));
+}
+
+.floors-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  border-right: 1px solid rgba(148, 163, 184, 0.2);
+  padding-right: 0.75rem;
+  gap: 0;
+}
+
+.floor-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  height: var(--floor-height);
+  padding: 0 0.5rem;
+  border-bottom: 1px dashed rgba(148, 163, 184, 0.2);
+}
+
+.floor-row:last-child {
+  border-bottom: none;
+}
+
+.floor-label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #f1f5f9;
+}
+
+.call-buttons {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.call-button {
+  background: rgba(59, 130, 246, 0.12);
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  border-radius: 0.5rem;
+  color: #cbd5f5;
+  cursor: pointer;
+  font-size: 0.85rem;
+  padding: 0.35rem 0.65rem;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.call-button:hover,
+.call-button:focus-visible {
+  background: rgba(59, 130, 246, 0.28);
+  transform: translateY(-2px);
+}
+
+.call-button.pending {
+  background: rgba(34, 197, 94, 0.35);
+  border-color: rgba(34, 197, 94, 0.5);
+  color: #f0fdf4;
+}
+
+.shaft-area {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 1rem;
+  padding: 0.75rem;
+  background: rgba(15, 23, 42, 0.55);
+  border-radius: 0.9rem;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  position: relative;
+}
+
+.elevator-shaft {
+  position: relative;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  border-radius: 0.8rem;
+  background: linear-gradient(180deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.95));
+  overflow: hidden;
+}
+
+.elevator-car {
+  position: absolute;
+  left: 15%;
+  right: 15%;
+  bottom: 0;
+  height: var(--floor-height);
+  background: radial-gradient(circle at top, rgba(56, 189, 248, 0.85), rgba(14, 165, 233, 0.8));
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #0f172a;
+  box-shadow: 0 10px 30px rgba(14, 165, 233, 0.45);
+  transition: bottom 1.2s linear, background 0.3s ease;
+}
+
+.elevator-car.door-open {
+  background: radial-gradient(circle at top, rgba(96, 165, 250, 0.9), rgba(14, 116, 233, 0.85));
+  box-shadow: 0 0 25px rgba(59, 130, 246, 0.9);
+}
+
+.panels-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.pending-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 0.85rem;
+  border-radius: 0.75rem;
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  font-size: 0.9rem;
+  color: #cbd5f5;
+}
+
+.pending-count {
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #fbbf24;
+}
+
+.elevator-panel {
+  background: rgba(15, 23, 42, 0.78);
+  border-radius: 0.9rem;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  padding: 1rem 1.2rem 1.3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.35);
+}
+
+.elevator-panel h3 {
+  margin: 0;
+  color: #38bdf8;
+  font-size: 1.1rem;
+}
+
+.panel-status {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #cbd5f5;
+}
+
+.floor-button-grid {
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: repeat(5, minmax(42px, 1fr));
+}
+
+.floor-button {
+  background: rgba(59, 130, 246, 0.12);
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  border-radius: 0.6rem;
+  color: #e2e8f0;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 0.5rem 0;
+  transition: background-color 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+}
+
+.floor-button:hover,
+.floor-button:focus-visible {
+  background: rgba(59, 130, 246, 0.25);
+  border-color: rgba(96, 165, 250, 0.6);
+  transform: translateY(-2px);
+}
+
+.floor-button.active {
+  background: rgba(34, 197, 94, 0.35);
+  border-color: rgba(34, 197, 94, 0.6);
+  color: #f0fdf4;
+}
+
+@media (max-width: 960px) {
+  .simulator-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .visual-area {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .elevator-shaft {
+    min-height: 320px;
+  }
+}

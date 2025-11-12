@@ -1,0 +1,17 @@
+{
+  "config": {
+    "tool": "gemini-cli",
+    "tool_mode": "standard",
+    "model": "pro",
+    "provider": "gemini-default",
+    "port": "8698"
+  },
+  "results": {
+    "context_window": "",
+    "context_fill": "",
+    "dollar_cost": "",
+    "time_taken": "00:04:53",
+    "tokens_sent": "196205",
+    "tokens_received": "8155"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "config": {
+    "tool": "kilo",
+    "tool_mode": "orchestrator",
+    "model": "kimi-k2-0905",
+    "provider": "openrouter-default",
+    "port": "8470"
+  },
+  "results": {
+    "context_window": "262144",
+    "context_fill": "29000",
+    "dollar_cost": "0.14",
+    "time_taken": "00:14:00",
+    "tokens_sent": "237400",
+    "tokens_received": "3800"
+  }
+}

@@ -1,0 +1,380 @@
+/* 
+ * Elevator Simulator CSS
+ * Author: Kilo Code
+ * Description: Modern styling for the Elevator Simulator
+ */
+
+/* CSS Custom Properties for configurable values */
+:root {
+  /* Color scheme */
+  --primary-color: #2c3e50;
+  --secondary-color: #3498db;
+  --accent-color: #e74c3c;
+  --background-color: #ecf0f1;
+  --text-color: #333;
+  --border-color: #bdc3c7;
+  --button-normal: #fff;
+  --button-hover: #f0f0f0;
+  --button-active: #ddd;
+  --button-disabled: #ccc;
+  --elevator-color: #3498db;
+  --elevator-door: #2980b9;
+  --floor-color: #fff;
+  --floor-border: #ddd;
+  
+  /* Sizes */
+  --building-width: 300px;
+  --floor-height: 60px;
+  --elevator-width: 80px;
+  --elevator-height: 50px;
+  --button-size: 30px;
+  --control-panel-width: 200px;
+  
+  /* Animation speeds */
+  --elevator-speed: 2s;
+  --button-press-duration: 0.1s;
+}
+
+/* Reset and base styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  padding: 20px;
+}
+
+/* Header styling */
+header {
+  text-align: center;
+  margin-bottom: 30px;
+  padding: 20px;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+  margin-bottom: 10px;
+  font-size: 2.5rem;
+}
+
+header p {
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+/* Main container */
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto auto;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Building section */
+.building {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.building h2 {
+  text-align: center;
+  margin-bottom: 15px;
+  color: var(--primary-color);
+}
+
+.floors {
+  display: flex;
+  flex-direction: column-reverse;
+  height: calc(var(--floor-height) * 10);
+  border: 2px solid var(--border-color);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.floor {
+  height: var(--floor-height);
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+  border-bottom: 1px solid var(--floor-border);
+  background-color: var(--floor-color);
+}
+
+.floor:last-child {
+  border-bottom: none;
+}
+
+.floor-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.floor-number {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+/* Floor buttons */
+.floor-button {
+  width: var(--button-size);
+  height: var(--button-size);
+  border: 2px solid var(--border-color);
+  background-color: var(--button-normal);
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.floor-button:hover:not(:disabled) {
+  background-color: var(--button-hover);
+  transform: scale(1.1);
+}
+
+.floor-button:active:not(:disabled) {
+  background-color: var(--button-active);
+  transform: scale(0.95);
+}
+
+.floor-button:disabled {
+  background-color: var(--button-disabled);
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Elevator shafts section */
+.elevator-shafts {
+  grid-column: 2;
+  grid-row: 1;
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.elevator-shafts h2 {
+  text-align: center;
+  margin-bottom: 15px;
+  color: var(--primary-color);
+}
+
+.shafts-container {
+  display: flex;
+  justify-content: space-around;
+  height: 600px;
+  border: 2px solid var(--border-color);
+  border-radius: 5px;
+  padding: 10px;
+  position: relative;
+  background-color: #f8f9fa;
+}
+
+.elevator-shaft {
+  width: calc(var(--elevator-width) + 10px);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.elevator {
+  width: var(--elevator-width);
+  height: var(--elevator-height);
+  background-color: var(--elevator-color);
+  border: 2px solid var(--elevator-door);
+  border-radius: 5px;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+  transition: bottom var(--elevator-speed) linear;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.elevator-id {
+  font-size: 0.8rem;
+  margin-bottom: 2px;
+}
+
+.elevator-floor, .elevator-direction {
+  font-size: 0.7rem;
+}
+
+/* Control panels section */
+.control-panels {
+  grid-column: 2;
+  grid-row: 2;
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.control-panels h2 {
+  text-align: center;
+  margin-bottom: 15px;
+  color: var(--primary-color);
+}
+
+.control-panel {
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  background-color: #f8f9fa;
+}
+
+.control-panel:last-child {
+  margin-bottom: 0;
+}
+
+.control-panel h3 {
+  margin-bottom: 10px;
+  color: var(--secondary-color);
+  text-align: center;
+}
+
+.button-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+
+.elevator-button {
+  width: var(--button-size);
+  height: var(--button-size);
+  border: 2px solid var(--border-color);
+  background-color: var(--button-normal);
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.elevator-button:hover {
+  background-color: var(--button-hover);
+  transform: scale(1.1);
+}
+
+.elevator-button:active {
+  background-color: var(--button-active);
+  transform: scale(0.95);
+}
+
+.elevator-button.pressed {
+  background-color: var(--secondary-color);
+  color: white;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Status display section */
+.status-display {
+  grid-column: 1 / span 2;
+  grid-row: 3;
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.status-display h2 {
+  text-align: center;
+  margin-bottom: 15px;
+  color: var(--primary-color);
+}
+
+.status-content {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.status-item {
+  margin: 10px;
+  padding: 10px 20px;
+  background-color: var(--secondary-color);
+  color: white;
+  border-radius: 20px;
+  text-align: center;
+  min-width: 150px;
+}
+
+.status-label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+/* Responsive design */
+@media (max-width: 900px) {
+  .container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+  
+  .building, .elevator-shafts, .control-panels, .status-display {
+    grid-column: 1;
+  }
+  
+  .building {
+    grid-row: 1;
+  }
+  
+  .elevator-shafts {
+    grid-row: 2;
+  }
+  
+  .control-panels {
+    grid-row: 3;
+  }
+  
+  .status-display {
+    grid-row: 4;
+  }
+  
+  .shafts-container {
+    height: 400px;
+  }
+}
+
+/* Animation for button press */
+@keyframes buttonPress {
+  0% { transform: scale(1); }
+  50% { transform: scale(0.9); }
+  100% { transform: scale(1); }
+}
+
+.floor-button:active:not(:disabled), .elevator-button:active {
+  animation: buttonPress var(--button-press-duration) ease;
+}

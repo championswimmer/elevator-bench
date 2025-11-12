@@ -1,0 +1,17 @@
+{
+  "config": {
+    "tool": "kilo",
+    "tool_mode": "orchestrator",
+    "model": "glm-4.6",
+    "provider": "openrouter-default",
+    "port": "8173"
+  },
+  "results": {
+    "context_window": "202800",
+    "context_fill": "42000",
+    "dollar_cost": "0.18",
+    "time_taken": "00:20:00",
+    "tokens_sent": "448000",
+    "tokens_received": "6500"
+  }
+}

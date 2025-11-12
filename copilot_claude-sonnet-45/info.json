@@ -1,0 +1,17 @@
+{
+  "config": {
+    "tool": "copilot",
+    "tool_mode": "agent",
+    "model": "claude-sonnet-4.5",
+    "provider": "copilot-default",
+    "port": "8219"
+  },
+  "results": {
+    "context_window": "",
+    "context_fill": "",
+    "dollar_cost": "1x",
+    "time_taken": "00:13:30",
+    "tokens_sent": "26583",
+    "tokens_received": ""
+  }
+}
