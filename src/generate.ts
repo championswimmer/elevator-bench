@@ -26,6 +26,14 @@ function toDisplayName(slug: string): string {
     .join(" ");
 }
 
+function pickString(value: unknown): string | null {
+  if (typeof value !== "string") {
+    return null;
+  }
+  const trimmed = value.trim();
+  return trimmed.length > 0 ? trimmed : null;
+}
+
 async function main(): Promise<void> {
   const rootDir = process.cwd();
   const templatePath = join(rootDir, "src", "index.template.html");
@@ -88,10 +96,69 @@ async function main(): Promise<void> {
     await rm(targetDir, { recursive: true, force: true });
     await cp(modelDistDir, targetDir, { recursive: true });
 
-    const displayName = toDisplayName(slug);
+    let displayName = toDisplayName(slug);
+    const descriptionSections: string[] = [];
+    const secondarySections: string[] = [];
+
+    const infoPath = join(modelRoot, "info.json");
+    if (await pathExists(infoPath)) {
+      try {
+        const infoRaw = await readFile(infoPath, "utf8");
+        const info = JSON.parse(infoRaw) as {
+          config?: {
+            tool?: unknown;
+            tool_mode?: unknown;
+            model?: unknown;
+            provider?: unknown;
+          };
+          results?: {
+            time_taken?: unknown;
+          };
+        };
+
+        const config = info?.config ?? {};
+        const modelName = pickString(config.model);
+        const toolName = pickString(config.tool);
+        const modeName = pickString(config.tool_mode);
+        const providerName = pickString(config.provider);
+
+        if (modelName) {
+          displayName = modelName;
+        }
+        if (toolName) {
+          descriptionSections.push(`Tool: ${toolName}`);
+        }
+        if (modeName) {
+          descriptionSections.push(`Mode: ${modeName}`);
+        }
+        if (providerName) {
+          secondarySections.push(`Provider: ${providerName}`);
+        }
+
+        const results = info?.results ?? {};
+        const timeTaken = pickString(results.time_taken);
+        if (timeTaken) {
+          secondarySections.push(`Run Time: ${timeTaken}`);
+        }
+      } catch (error) {
+        console.warn(`Could not read info.json for ${slug}:`, error);
+      }
+    }
+
+    const descriptionLines = [
+      descriptionSections.length > 0
+        ? descriptionSections.join(" | ")
+        : "Elevator simulator implementation",
+      ...secondarySections.map((section) => section),
+    ].filter(Boolean);
+
+    const descriptionHtml = descriptionLines
+      .map((line) => `                <div class="model-description">${line}</div>`)
+      .join("\n");
+
     const linkHtml = `            <a href="${slug}/" class="model-card">
                 <div class="model-name">${displayName} <span class="arrow">→</span></div>
-                <div class="model-description">Elevator simulator implementation</div>
+${descriptionHtml}
             </a>`;
     modelLinks.push(linkHtml);
   }

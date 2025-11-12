@@ -2,7 +2,7 @@
   "config": {
     "tool": "gemini-cli",
     "tool_mode": "standard",
-    "model": "pro",
+    "model": "gemini-2.5-pro",
     "provider": "gemini-default",
     "port": "8698"
   },
