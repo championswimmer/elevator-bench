@@ -1,0 +1,17 @@
+{
+  "config": {
+    "tool": "copilot",
+    "tool_mode": "agent",
+    "model": "grok-code-fast-1",
+    "provider": "copilot-default",
+    "port": "8706"
+  },
+  "results": {
+    "context_window": "",
+    "context_fill": "",
+    "dollar_cost": "",
+    "time_taken": "00:01:50",
+    "tokens_sent": "",
+    "tokens_received": ""
+  }
+}
