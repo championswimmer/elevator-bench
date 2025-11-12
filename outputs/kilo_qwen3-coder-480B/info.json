@@ -1,0 +1,17 @@
+{
+  "config": {
+    "tool": "kilo",
+    "tool_mode": "orchestrator",
+    "model": "qwen3-coder-480b",
+    "provider": "openrouter-default",
+    "port": "8429"
+  },
+  "results": {
+    "context_window": "262100",
+    "context_fill": "51200",
+    "dollar_cost": "$0.13",
+    "time_taken": "00:13:30",
+    "tokens_sent": "",
+    "tokens_received": ""
+  }
+}

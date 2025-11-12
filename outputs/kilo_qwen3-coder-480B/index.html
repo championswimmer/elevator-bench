@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elevator Simulator</title>
+    <script type="application/json" id="model-info">
+        {
+            "tool": "kilo",
+            "provider": "openrouter-default",
+            "model": "qwen3-coder-480b"
+        }
+    </script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Model information display -->
+    <header id="model-info-header">
+        <h1>Elevator Simulator</h1>
+        <div id="model-details">
+            <span class="model-info-item">Tool: <span id="tool-name">Loading...</span></span>
+            <span class="model-info-item">Provider: <span id="provider-name">Loading...</span></span>
+            <span class="model-info-item">Model: <span id="model-name">Loading...</span></span>
+        </div>
+    </header>
+
+    <!-- Building display area -->
+    <main id="simulator-container">
+        <div id="building">
+            <!-- Floors will be generated here by JavaScript -->
+            <!-- Each floor will have: 
+                 - Floor label (Floor 0, Floor 1, etc.)
+                 - Up/Down request buttons (except top floor doesn't have up, ground floor doesn't have down)
+                 - Elevator shafts with elevator cars that can show movement -->
+        </div>
+
+        <!-- Elevator control panels -->
+        <div id="elevators">
+            <!-- Elevators will be generated here by JavaScript -->
+            <!-- Each elevator will have:
+                 - Elevator label (Elevator 0, Elevator 1, etc.)
+                 - Elevator door visualization
+                 - Floor selection buttons (0-9) -->
+        </div>
+    </main>
+
+    <script src="script.ts" type="module"></script>
+</body>
+</html>

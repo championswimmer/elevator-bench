@@ -1,0 +1,359 @@
+/* Basic reset and typography */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    color: #333;
+}
+
+/* Header styling */
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    width: 100%;
+    max-width: 900px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    color: #2c3e50;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+#model-details {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.model-info-item {
+    background: rgba(255, 255, 255, 0.7);
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Building container - Modern glass-like appearance */
+#building {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 15px;
+    width: 100%;
+    max-width: 900px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(10px);
+}
+
+/* Floor styling with modern design */
+.floor {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to right, #3498db, #2c3e50);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.floor:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Floor label with clear numbering */
+.floor-label {
+    font-weight: bold;
+    font-size: 1.4rem;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    background: rgba(0, 0, 0, 0.2);
+    padding: 8px 15px;
+    border-radius: 20px;
+}
+
+/* Button container */
+.button-container {
+    display: flex;
+    gap: 12px;
+}
+
+/* Elevator request buttons with visual feedback */
+.elevator-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 30px;
+    background: linear-gradient(to bottom, #3498db, #2980b9);
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.elevator-button:hover {
+    background: linear-gradient(to bottom, #3cb0fd, #3498db);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.elevator-button:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.elevator-button:disabled {
+    background: linear-gradient(to bottom, #bdc3c7, #95a5a6);
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Elevators container */
+#elevators {
+    display: flex;
+    gap: 30px;
+    margin-top: 40px;
+    justify-content: center;
+    width: 100%;
+    max-width: 900px;
+    flex-wrap: wrap;
+}
+
+/* Elevator styling with modern design */
+.elevator {
+    width: 100px;
+    height: 140px;
+    background: linear-gradient(135deg, #2c3e50 0%, #1a2a3a 100%);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+    border: 3px solid #3498db;
+}
+
+.elevator::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 30px;
+    background: rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.elevator-label {
+    position: absolute;
+    top: 5px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    z-index: 2;
+}
+
+/* Elevator door with animation support */
+.elevator-door {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right, #34495e, #2c3e50);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.5s ease-in-out;
+    z-index: 1;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.elevator-door.left {
+    left: 0;
+    transform: translateX(0);
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.elevator-door.right {
+    right: 0;
+    transform: translateX(0);
+    border-left: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+/* Door opening animation */
+.elevator-door.open {
+    transition: transform 0.5s ease-in-out;
+}
+
+.elevator-door.left.open {
+    transform: translateX(-100%);
+}
+
+.elevator-door.right.open {
+    transform: translateX(100%);
+}
+
+/* Elevator buttons container */
+.elevator-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-top: 35px;
+    width: 100%;
+    max-width: 130px;
+    z-index: 2;
+}
+
+/* Elevator floor button */
+.elevator-floor-button {
+    padding: 8px;
+    border: 2px solid #3498db;
+    background: linear-gradient(to bottom, #2c3e50, #1a2a3a);
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.elevator-floor-button:hover {
+    background: linear-gradient(to bottom, #3498db, #2980b9);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.elevator-floor-button:active {
+    transform: translateY(1px);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.elevator-floor-button.active {
+    background: linear-gradient(to bottom, #27ae60, #2ecc71);
+    border-color: #2ecc71;
+    box-shadow: 0 0 15px rgba(46, 204, 113, 0.5);
+}
+
+.elevator-floor-button:disabled {
+    background: linear-gradient(to bottom, #7f8c8d, #95a5a6);
+    border-color: #7f8c8d;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Elevator car animation */
+.elevator-car {
+    position: absolute;
+    width: 80%;
+    height: 60px;
+    background: linear-gradient(to bottom, #7f8c8d, #95a5a6);
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: #2c3e50;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 2s ease-in-out;
+    z-index: 1;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    #building {
+        padding: 15px;
+    }
+    
+    .floor {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
+    .button-container {
+        align-self: flex-end;
+    }
+    
+    #elevators {
+        gap: 20px;
+    }
+    
+    .elevator {
+        width: 80px;
+        height: 120px;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    #model-details {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .floor {
+        padding: 15px;
+    }
+    
+    .floor-label {
+        font-size: 1.2rem;
+    }
+    
+    .elevator-button {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+    
+    #elevators {
+        gap: 15px;
+    }
+    
+    .elevator {
+        width: 70px;
+        height: 100px;
+    }
+    
+    .elevator-buttons {
+        max-width: 100px;
+        gap: 5px;
+    }
+    
+    .elevator-floor-button {
+        padding: 6px;
+        font-size: 0.8rem;
+    }
+}
+
+.elevator-floor-button:disabled {
+    background-color: #222;
+    cursor: not-allowed;
+}
