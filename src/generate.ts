@@ -1,6 +1,7 @@
 #!/usr/bin/env bun
 // @ts-nocheck
 import { cp, mkdir, readFile, readdir, rm, stat, writeFile } from "node:fs/promises";
+import { spawn } from "node:child_process";
 import { join } from "node:path";
 
 const TEMPLATE_PLACEHOLDER = "{{MODEL_LINKS}}";
@@ -65,23 +66,27 @@ async function main(): Promise<void> {
 
     const slug = entry.name;
     const modelRoot = join(outputsDir, slug);
-    const builtDir = join(modelRoot, "dist");
-    const fallbackDir = modelRoot;
+    const modelDistDir = join(modelRoot, "dist");
+    const distIndexPath = join(modelDistDir, "index.html");
 
-    let sourceDir = builtDir;
-    if (!(await pathExists(join(builtDir, "index.html")))) {
-      if (await pathExists(join(fallbackDir, "index.html"))) {
-        sourceDir = fallbackDir;
-        console.warn(`dist build missing for ${slug}; falling back to source files.`);
-      } else {
-        console.warn(`Skipping ${slug}: no index.html found.`);
+    if (!(await pathExists(distIndexPath))) {
+      try {
+        await mkdir(modelDistDir, { recursive: true });
+        await runBuild(modelRoot);
+      } catch (error) {
+        console.error(`Build failed for ${slug}:`, error);
+        continue;
+      }
+
+      if (!(await pathExists(distIndexPath))) {
+        console.warn(`Skipping ${slug}: build did not create dist/index.html.`);
         continue;
       }
     }
 
     const targetDir = join(distDir, slug);
     await rm(targetDir, { recursive: true, force: true });
-    await cp(sourceDir, targetDir, { recursive: true });
+    await cp(modelDistDir, targetDir, { recursive: true });
 
     const displayName = toDisplayName(slug);
     const linkHtml = `            <a href="${slug}/" class="model-card">
@@ -99,6 +104,24 @@ async function main(): Promise<void> {
   await writeFile(distIndexPath, template.replace(TEMPLATE_PLACEHOLDER, renderedLinks), "utf8");
 
   console.log(`Generated index.html with ${modelLinks.length} model links`);
+}
+
+async function runBuild(cwd: string): Promise<void> {
+  await new Promise<void>((resolve, reject) => {
+    const child = spawn("bun", ["build", "./index.html", "--outdir", "dist"], {
+      cwd,
+      stdio: "inherit",
+    });
+
+    child.on("error", (error) => reject(error));
+    child.on("close", (code) => {
+      if (code === 0) {
+        resolve();
+      } else {
+        reject(new Error(`bun build exited with code ${code}`));
+      }
+    });
+  });
 }
 
 main().catch((error) => {
