@@ -1,0 +1,173 @@
+/* styles.css */
+body {
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.info {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 10px;
+}
+
+.building {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.floor {
+  display: flex;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  align-items:  center;
+  min-height: 60px;
+  padding: 15px;
+}
+
+.floor-number {
+  text-align: center;
+  width: 50px;
+  font-weight: bold;
+}
+
+.floor-buttons {
+  display: flex;
+  gap: 10px;
+  margin: 0 20px;
+}
+
+.floor-button {
+  color: #fff;
+  cursor: pointer;
+  background-color: #4caf50;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 15px;
+  font-size: 14px;
+}
+
+.floor-button:disabled {
+  cursor: not-allowed;
+  background-color: #ccc;
+}
+
+.floor-button.up {
+  background-color: #2196f3;
+}
+
+.floor-button.down {
+  background-color: #f44336;
+}
+
+.elevators-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.elevator {
+  display: flex;
+  position: relative;
+  background-color: gold;
+  border: 2px solid #333;
+  border-radius: 5px;
+  justify-content: center;
+  align-items:  center;
+  width: 80px;
+  height: 60px;
+  transition: transform .5s;
+  font-weight: bold;
+}
+
+.elevator.doors-open .door {
+  display: block;
+}
+
+.elevator .door {
+  position: absolute;
+  display: none;
+  background-color: #8b4513;
+  width: 30px;
+  height: 50px;
+}
+
+.elevator .door.left {
+  left: 5px;
+}
+
+.elevator .door.right {
+  right: 5px;
+}
+
+.elevator-controls {
+  display: flex;
+  flex-direction: column;
+  align-items:  center;
+  gap: 5px;
+}
+
+.destination-buttons {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 5px;
+  max-width: 200px;
+}
+
+.destination-button {
+  color: #fff;
+  cursor: pointer;
+  background-color: #9e9e9e;
+  border: none;
+  border-radius: 3px;
+  padding: 5px;
+  font-size: 12px;
+}
+
+.destination-button.active {
+  background-color: #4caf50;
+}
+
+.destination-button:disabled {
+  cursor: not-allowed;
+  background-color: #ccc;
+}
+
+.controls {
+  text-align: center;
+}
+
+.controls button {
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  margin: 0 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+#start-btn {
+  color: #fff;
+  background-color: #4caf50;
+}
+
+#reset-btn {
+  color: #fff;
+  background-color: #f44336;
+}
+
+.status {
+  text-align: center;
+  margin-top: 10px;
+  font-style: italic;
+}
