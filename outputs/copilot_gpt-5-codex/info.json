@@ -3,7 +3,7 @@
     "tool": "copilot",
     "tool_mode": "agent",
     "model": "gpt-5-codex",
-    "provider": "openrouter-default",
+    "provider": "copilot-default",
     "port": "8665"
   },
   "results": {
