@@ -1,0 +1,17 @@
+{
+  "config": {
+    "tool": "copilot",
+    "tool_mode": "agent",
+    "model": "gemini-2.5-pro",
+    "provider": "copilot-default",
+    "port": "8013"
+  },
+  "results": {
+    "context_window": "172000",
+    "context_fill": "19183",
+    "dollar_cost": "1x",
+    "time_taken": "00:03:15",
+    "tokens_sent": "19021",
+    "tokens_received": ""
+  }
+}
