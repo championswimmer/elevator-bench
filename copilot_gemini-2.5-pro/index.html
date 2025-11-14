@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elevator Simulator</title>
+    <script>
+        fetch('info.json')
+            .then(response => response.json())
+            .then(data => {
+                const infoContainer = document.createElement('div');
+                infoContainer.id = 'info-container';
+                infoContainer.innerHTML = `
+                    <p><strong>Tool:</strong> ${data.config.tool}</p>
+                    <p><strong>Model:</strong> ${data.config.model}</p>
+                    <p><strong>Provider:</strong> ${data.config.provider}</p>
+                `;
+                document.body.insertBefore(infoContainer, document.body.firstChild);
+            });
+    </script>
+    
+<link rel="stylesheet" crossorigin href="./index-3g3sge4x.css"><script type="module" crossorigin src="./index-67q0799y.js"></script></head>
+<body>
+    <h1>Elevator Simulator</h1>
+    <div id="building"></div>
+    
+</body>
+</html>

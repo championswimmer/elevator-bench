@@ -1,0 +1,91 @@
+/* styles.css */
+body {
+  display: flex;
+  background-color: #f0f0f0;
+  flex-direction: column;
+  align-items:  center;
+  margin: 0;
+  font-family: sans-serif;
+}
+
+#info-container {
+  position: absolute;
+  background: #fff;
+  border-radius: 5px;
+  padding: 10px;
+  top: 10px;
+  left: 10px;
+  box-shadow: 0 0 5px #0003;
+}
+
+#building {
+  display: flex;
+  background-color: #ccc;
+  border: 3px solid #333;
+  margin-top: 20px;
+}
+
+.floor {
+  display: flex;
+  position: relative;
+  border-bottom: 1px solid #999;
+  justify-content: space-between;
+  align-items:  center;
+  width: 150px;
+  height: 100px;
+  padding: 0 10px;
+}
+
+.floor:last-child {
+  border-bottom: none;
+}
+
+.floor-label {
+  font-weight: bold;
+}
+
+.floor-buttons button {
+  display: block;
+  cursor: pointer;
+  margin: 5px 0;
+  padding: 5px;
+}
+
+.elevator-shaft {
+  position: relative;
+  border-left: 1px solid #999;
+  width: 100px;
+  height: 100%;
+}
+
+.elevator {
+  position: absolute;
+  display: flex;
+  background-color: #f0a0a0;
+  border: 1px solid #900;
+  flex-direction: column;
+  justify-content: center;
+  align-items:  center;
+  width: 90%;
+  height: 98px;
+  transition: bottom .5s ease-in-out;
+  bottom: 0;
+  left: 5%;
+}
+
+.elevator-buttons {
+  display: none;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.elevator.selected .elevator-buttons {
+  display: flex;
+}
+
+.elevator-buttons button {
+  width: 30px;
+  height: 30px;
+  margin: 2px;
+  font-size: 10px;
+}
