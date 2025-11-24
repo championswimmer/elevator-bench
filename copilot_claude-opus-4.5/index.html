@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elevator Simulator</title>
+  
+<link rel="stylesheet" crossorigin href="./index-qtg63asm.css"><script type="module" crossorigin src="./index-fbh4nftq.js"></script></head>
+<body>
+  <h1>🛗 Elevator Simulator</h1>
+  
+  <div class="info-bar">
+    <span>Tool: <strong>copilot</strong></span>
+    <span>Model: <strong>claude-opus-4.5</strong></span>
+    <span>Provider: <strong>copilot-default</strong></span>
+  </div>
+
+  <div id="simulator-container"></div>
+
+  <div class="instructions">
+    <h3>How to Use</h3>
+    <ul>
+      <li><strong>Call an elevator:</strong> Click the ▲ (up) or ▼ (down) buttons next to each floor to request an elevator.</li>
+      <li><strong>Select a destination:</strong> Use the numbered buttons in the elevator panels on the right to select your destination floor.</li>
+      <li><strong>Watch the elevators:</strong> Elevators will move smoothly between floors and open their doors when arriving.</li>
+    </ul>
+    <h3>Elevator Logic</h3>
+    <ul>
+      <li>The closest idle elevator or one traveling in your direction will respond first.</li>
+      <li>Elevators won't change direction until all requests in the current direction are fulfilled.</li>
+      <li>If all elevators are busy, your request will be queued.</li>
+    </ul>
+  </div>
+
+  
+</body>
+</html>
