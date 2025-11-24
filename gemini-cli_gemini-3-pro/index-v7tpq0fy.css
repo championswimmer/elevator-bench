@@ -1,0 +1,219 @@
+/* styles.css */
+:root {
+  --floor-height: 60px;
+  --elevator-width: 50px;
+  --building-bg: #f0f0f0;
+  --elevator-bg: #333;
+  --elevator-active-bg: #2196f3;
+  --button-size: 24px;
+  --gap: 10px;
+}
+
+body {
+  display: flex;
+  background-color: #eef2f5;
+  flex-direction: column;
+  align-items:  center;
+  margin: 0;
+  padding: 20px;
+  font-family: Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.info-panel {
+  text-align: center;
+  background: #fff;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  padding: 15px 30px;
+  box-shadow: 0 2px 5px #0000001a;
+}
+
+.info-panel h1 {
+  color: #333;
+  margin: 0 0 10px;
+  font-size: 1.5rem;
+}
+
+.info-panel p {
+  color: #666;
+  margin: 5px 0;
+  font-size: .9rem;
+}
+
+#simulator-container {
+  display: flex;
+  overflow-x: auto;
+  background: #fff;
+  border-radius: 8px;
+  flex-direction: column;
+  padding: 20px;
+  box-shadow: 0 4px 10px #0000001a;
+}
+
+.building {
+  display: flex;
+  background-color: var(--building-bg);
+  position: relative;
+  border: 2px solid #ccc;
+  flex-direction: row;
+  padding: 10px;
+}
+
+.floors-control-column {
+  display: flex;
+  flex-direction: column-reverse;
+  margin-right: 20px;
+}
+
+.floor-control {
+  height: var(--floor-height);
+  display: flex;
+  box-sizing: border-box;
+  border-bottom: 1px solid #ddd;
+  justify-content: space-between;
+  align-items:  center;
+  width: 120px;
+  padding: 0 10px;
+}
+
+.floor-label {
+  color: #555;
+  font-weight: bold;
+}
+
+.floor-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.floor-btn {
+  width: var(--button-size);
+  height: var(--button-size);
+  cursor: pointer;
+  display: flex;
+  background: #eee;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  justify-content: center;
+  align-items:  center;
+  transition: background .2s;
+  font-size: 12px;
+}
+
+.floor-btn:hover {
+  background: #ddd;
+}
+
+.floor-btn.active {
+  color: #fff;
+  background: #ff9800;
+  border-color: #e65100;
+}
+
+.shafts-container {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+}
+
+.elevator-shaft {
+  position: relative;
+  width: var(--elevator-width);
+  background-color: #ddd;
+  border: 1px solid #bbb;
+}
+
+.shaft-floor-guide {
+  position: absolute;
+  background-color: #0000001a;
+  width: 100%;
+  height: 1px;
+}
+
+.elevator {
+  position: absolute;
+  height: var(--floor-height);
+  background-color: var(--elevator-bg);
+  display: flex;
+  color: #fff;
+  z-index: 10;
+  border-radius: 2px;
+  flex-direction: column;
+  justify-content: center;
+  align-items:  center;
+  width: 100%;
+  transition: bottom 1s linear;
+  font-size: 10px;
+  bottom: 0;
+  left: 0;
+  box-shadow: 0 2px 4px #0000004d;
+}
+
+.elevator.busy {
+  background-color: var(--elevator-active-bg);
+}
+
+.elevator-doors {
+  position: absolute;
+  display: flex;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.door-left, .door-right {
+  background-color: silver;
+  border: 1px solid #999;
+  width: 50%;
+  height: 100%;
+  transition: transform .5s ease-in-out;
+}
+
+.elevator.open .door-left {
+  transform: translateX(-80%);
+}
+
+.elevator.open .door-right {
+  transform: translateX(80%);
+}
+
+.elevator-info {
+  z-index: 11;
+  text-align: center;
+}
+
+.controls-container {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  margin-top: 20px;
+  padding-left: 150px;
+}
+
+.elevator-panel {
+  width: var(--elevator-width);
+  display: flex;
+  background: #eee;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  flex-direction: column-reverse;
+  gap: 2px;
+  padding: 5px;
+}
+
+.panel-btn {
+  cursor: pointer;
+  background: #fff;
+  border: 1px solid #999;
+  width: 100%;
+  height: 20px;
+  font-size: 10px;
+}
+
+.panel-btn.active {
+  color: #fff;
+  background: #4caf50;
+}
