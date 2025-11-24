@@ -1,0 +1,225 @@
+:root {
+    --floor-height: 60px;
+    --elevator-width: 50px;
+    --building-bg: #f0f0f0;
+    --elevator-bg: #333;
+    --elevator-active-bg: #2196F3; /* Blue when busy */
+    --button-size: 24px;
+    --gap: 10px;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #eef2f5;
+}
+
+.info-panel {
+    background: white;
+    padding: 15px 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.info-panel h1 {
+    margin: 0 0 10px 0;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.info-panel p {
+    margin: 5px 0;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+#simulator-container {
+    display: flex;
+    flex-direction: column; /* Changed to column to stack building and controls */
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    overflow-x: auto;
+}
+
+/* Building Layout */
+.building {
+    display: flex;
+    flex-direction: row;
+    border: 2px solid #ccc;
+    background-color: var(--building-bg);
+    padding: 10px;
+    position: relative;
+}
+
+/* Floors Column (Labels & Buttons) */
+.floors-control-column {
+    display: flex;
+    flex-direction: column-reverse; /* Floor 0 at bottom */
+    margin-right: 20px;
+}
+
+.floor-control {
+    height: var(--floor-height);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #ddd;
+    box-sizing: border-box;
+    padding: 0 10px;
+    width: 120px;
+}
+
+.floor-label {
+    font-weight: bold;
+    color: #555;
+}
+
+.floor-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.floor-btn {
+    width: var(--button-size);
+    height: var(--button-size);
+    border: 1px solid #aaa;
+    background: #eee;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    transition: background 0.2s;
+}
+
+.floor-btn:hover {
+    background: #ddd;
+}
+
+.floor-btn.active {
+    background: #ff9800; /* Orange when pressed */
+    color: white;
+    border-color: #e65100;
+}
+
+/* Shafts and Elevators */
+.shafts-container {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+
+.elevator-shaft {
+    position: relative;
+    width: var(--elevator-width);
+    /* Height will be calculated by JS: floors * floor-height */
+    background-color: #ddd;
+    border: 1px solid #bbb;
+}
+
+/* Horizontal lines for floors across shafts */
+.shaft-floor-guide {
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background-color: rgba(0,0,0,0.1);
+    /* top set by JS/CSS loop */
+}
+
+.elevator {
+    position: absolute;
+    bottom: 0; /* Start at ground */
+    left: 0;
+    width: 100%;
+    height: var(--floor-height);
+    background-color: var(--elevator-bg);
+    border-radius: 2px;
+    transition: bottom 1s linear; /* JS will override duration */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 10px;
+    z-index: 10;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.elevator.busy {
+    background-color: var(--elevator-active-bg);
+}
+
+.elevator-doors {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    pointer-events: none; /* Let clicks pass through if needed */
+}
+
+.door-left, .door-right {
+    width: 50%;
+    height: 100%;
+    background-color: silver;
+    border: 1px solid #999;
+    transition: transform 0.5s ease-in-out;
+}
+
+.elevator.open .door-left {
+    transform: translateX(-80%);
+}
+
+.elevator.open .door-right {
+    transform: translateX(80%);
+}
+
+.elevator-info {
+    z-index: 11;
+    text-align: center;
+}
+
+/* Control Panels for Elevators */
+.controls-container {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    padding-left: 150px; /* Offset to align with shafts (120px floor col + 20px margin + 10px padding) roughly */
+    gap: 15px;
+}
+
+.elevator-panel {
+    width: var(--elevator-width);
+    display: flex;
+    flex-direction: column-reverse; /* 0 at bottom */
+    gap: 2px;
+    background: #eee;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.panel-btn {
+    width: 100%;
+    height: 20px;
+    font-size: 10px;
+    background: white;
+    border: 1px solid #999;
+    cursor: pointer;
+}
+
+.panel-btn.active {
+    background: #4CAF50; /* Green for internal destination */
+    color: white;
+}
