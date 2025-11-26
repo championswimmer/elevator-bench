@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Elevator Simulator</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Elevator Simulator</h1>
+      <div class="meta">
+        <span>Model: gpt-5.1-codex</span>
+        <span>Tool: copilot (agent)</span>
+        <span>Provider: copilot-default</span>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="building-shell">
+        <div id="floor-stack"></div>
+        <div id="shaft-stack"></div>
+      </section>
+      <section id="panels"></section>
+    </main>
+
+    <script type="module" src="./script.ts"></script>
+  </body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "config": {
+    "tool": "copilot",
+    "tool_mode": "agent",
+    "model": "gpt-5.1-codex",
+    "provider": "copilot-default",
+    "port": "8994"
+  },
+  "results": {
+    "context_window": "",
+    "context_fill": "",
+    "dollar_cost": "1x",
+    "time_taken": "00:05:05",
+    "tokens_sent": "35168",
+    "tokens_received": ""
+  }
+}
