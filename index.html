@@ -29,6 +29,19 @@
             margin-bottom: 40px;
             font-size: 1.2em;
         }
+        .github-link {
+            margin-bottom: 10px;
+        }
+        .github-link a {
+            color: #667eea;
+            text-decoration: none;
+            font-size: 1em;
+            transition: color 0.2s;
+        }
+        .github-link a:hover {
+            color: #764ba2;
+            text-decoration: underline;
+        }
         .models-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -68,6 +81,7 @@
 <body>
     <div class="container">
         <h1>🏢 Elevator Bench</h1>
+        <p class="github-link"><a href="https://github.com/championswimmer/elevator-bench" target="_blank" rel="noopener noreferrer">📦 View on GitHub</a></p>
         <p class="subtitle">Comparing elevator simulator implementations across different AI models</p>
         
         <div class="models-grid">
