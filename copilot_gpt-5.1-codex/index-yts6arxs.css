@@ -1,0 +1,215 @@
+/* styles.css */
+:root {
+  color: #111;
+  background: #f4f6fb;
+  font-family: Segoe UI, Roboto, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(135deg, #f8fbff, #eef3ff);
+  min-height: 100vh;
+  margin: 0;
+  padding: 24px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.meta {
+  color: #444;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 4px;
+  font-size: .95rem;
+}
+
+main.layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.building-shell {
+  display: flex;
+  --floor-height: 60px;
+  background: #fff;
+  border-radius: 16px;
+  gap: 24px;
+  padding: 16px;
+  box-shadow: 0 15px 35px #0f235f1f;
+}
+
+#floor-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 180px;
+}
+
+.floor-row {
+  display: flex;
+  background: #eef2ff;
+  border: 1px solid #d7ddfb;
+  border-radius: 10px;
+  justify-content: space-between;
+  align-items:  center;
+  padding: 8px 12px;
+  transition: background .3s, transform .3s;
+}
+
+.floor-row.arriving {
+  background: #c8f7dc;
+  transform: scale(1.01);
+}
+
+.floor-label {
+  font-weight: 600;
+}
+
+.floor-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.call-button {
+  color: #fff;
+  cursor: pointer;
+  background: #4c6ef5;
+  border: none;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  transition: transform .2s, background .2s;
+  font-size: 1.2rem;
+}
+
+.call-button.down {
+  background: #ff7b54;
+}
+
+.call-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+
+.call-button:disabled {
+  opacity: .4;
+  cursor: not-allowed;
+}
+
+.call-button.pending {
+  box-shadow: 0 0 0 3px #4c6ef540;
+}
+
+#shaft-stack {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+  flex: 1;
+  align-items:  end;
+  gap: 16px;
+}
+
+.elevator-shaft {
+  position: relative;
+  height: calc(var(--floor-height) * var(--floors, 10));
+  background: repeating-linear-gradient(to top, #fff9, #fff9 1px, transparent 1px, transparent calc(var(--floor-height))), #dee8ff80;
+  border: 2px solid #dbe0ff;
+  border-radius: 12px;
+  padding: 8px;
+}
+
+.elevator-car {
+  position: absolute;
+  height: calc(var(--floor-height)  - 12px);
+  display: flex;
+  color: #fff;
+  background: linear-gradient(135deg, #4c6ef5, #6a82fb);
+  border-radius: 12px;
+  justify-content: center;
+  align-items:  center;
+  transition: bottom .75s linear;
+  font-weight: 600;
+  left: 8px;
+  right: 8px;
+  box-shadow: 0 12px 25px #4c6ef566;
+}
+
+.elevator-car .door {
+  background: #fff3;
+  border: 2px solid #fff6;
+  border-radius: 8px;
+  width: 70%;
+  height: 70%;
+}
+
+#panels {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  background: #fff;
+  border-radius: 16px;
+  gap: 16px;
+  padding: 16px;
+  box-shadow: 0 15px 35px #0f235f1f;
+}
+
+.panel {
+  display: flex;
+  border: 1px solid #e0e7ff;
+  border-radius: 12px;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px;
+}
+
+.panel h3 {
+  margin: 0;
+}
+
+.panel .status {
+  color: #555;
+  margin: 0;
+  font-size: .9rem;
+}
+
+.panel-buttons {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.panel-buttons button {
+  color: #1c2752;
+  cursor: pointer;
+  background: #edf2ff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 0;
+  transition: background .2s, transform .2s;
+  font-weight: 600;
+}
+
+.panel-buttons button.active {
+  background: #ffd43b;
+}
+
+.panel-buttons button:hover {
+  transform: translateY(-1px);
+}
+
+@media (max-width: 900px) {
+  main.layout {
+    grid-template-columns: 1fr;
+  }
+
+  #shaft-stack {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
