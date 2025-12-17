@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elevator Simulator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Elevator Simulator</h1>
+      <div class="info-bar">
+        <span class="info-item"><strong>Tool:</strong> claude-code</span>
+        <span class="info-item"><strong>Model:</strong> claude-opus-4.5</span>
+        <span class="info-item"><strong>Provider:</strong> anthropic-default</span>
+      </div>
+    </header>
+
+    <main>
+      <div class="simulator-layout">
+        <section class="building-section">
+          <h2>Building</h2>
+          <div id="building" class="building"></div>
+        </section>
+
+        <section class="controls-section">
+          <h2>Elevator Panels</h2>
+          <div id="elevator-panels" class="elevator-panels"></div>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <p>Click floor buttons (▲/▼) to call an elevator. Use elevator panels to select destination floors.</p>
+    </footer>
+  </div>
+
+  <script src="script.js" type="module"></script>
+</body>
+</html>
