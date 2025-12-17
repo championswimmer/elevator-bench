@@ -59,8 +59,12 @@ async function main(): Promise<void> {
   const outputsDir = join(rootDir, "outputs");
   const distDir = join(rootDir, "dist");
   const distIndexPath = join(distDir, "index.html");
+  const scriptSourcePath = join(rootDir, "src", "script.js");
+  const distScriptPath = join(distDir, "script.js");
 
   const template = await readFile(templatePath, "utf8");
+  await mkdir(distDir, { recursive: true });
+  await cp(scriptSourcePath, distScriptPath);
 
   let entries;
   try {
