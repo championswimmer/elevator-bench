@@ -1,0 +1,335 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h1 {
+    color: white;
+    text-align: center;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.controls button {
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#startSimulation {
+    background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+    color: white;
+}
+
+#startSimulation:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.4);
+}
+
+#resetSimulation {
+    background: linear-gradient(135deg, #f44336 0%, #da190b 100%);
+    color: white;
+}
+
+#resetSimulation:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(244, 67, 54, 0.4);
+}
+
+.simulation-info {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px 30px;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    font-size: 16px;
+}
+
+.info-item .label {
+    font-weight: bold;
+    opacity: 0.8;
+}
+
+.info-item span:last-child {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.building {
+    background: linear-gradient(180deg, #f5f5f5 0%, #e0e0e0 100%);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.floor {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 2px solid #ddd;
+    min-height: 80px;
+    transition: background-color 0.3s ease;
+}
+
+.floor:last-child {
+    border-bottom: none;
+}
+
+.floor:hover {
+    background-color: rgba(102, 126, 234, 0.05);
+}
+
+.floor-number {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 10px;
+    margin-right: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.floor-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-right: 30px;
+}
+
+.floor-buttons button {
+    width: 80px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 12px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+.floor-buttons button.up {
+    background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+    color: white;
+}
+
+.floor-buttons button.down {
+    background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
+    color: white;
+}
+
+.floor-buttons button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.floor-buttons button:active,
+.floor-buttons button.active {
+    transform: scale(0.95);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.elevator-shaft {
+    flex: 1;
+    height: 60px;
+    background: linear-gradient(180deg, #e0e0e0 0%, #bdbdbd 100%);
+    border: 2px solid #999;
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+}
+
+.elevator {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%);
+    border-radius: 6px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: top 0.5s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.elevator-number {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #333;
+}
+
+.elevator-doors {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 2px;
+}
+
+.door {
+    flex: 1;
+    background: linear-gradient(180deg, #bbb 0%, #999 100%);
+    border: 1px solid #888;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.elevator.open .door {
+    transform: scaleX(0.1);
+}
+
+.elevator-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    z-index: 1;
+}
+
+.elevator-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px;
+    justify-content: center;
+    max-width: 120px;
+}
+
+.elevator-btn {
+    width: 24px;
+    height: 24px;
+    border: 1px solid #666;
+    border-radius: 4px;
+    background: linear-gradient(180deg, #fff 0%, #ddd 100%);
+    font-size: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.elevator-btn:hover {
+    background: linear-gradient(180deg, #ff9800 0%, #f57c00 100%);
+    color: white;
+}
+
+.elevator-btn.active {
+    background: linear-gradient(180deg, #4CAF50 0%, #45a049 100%);
+    color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.elevator-direction {
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-top: 2px;
+}
+
+.status-idle {
+    background: linear-gradient(135deg, #9e9e9e 0%, #757575 100%);
+}
+
+.status-moving-up {
+    background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+}
+
+.status-moving-down {
+    background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.floor.requested {
+    background-color: rgba(76, 175, 80, 0.2);
+    animation: pulse 1s infinite;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    .floor {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .floor-number {
+        width: 50px;
+        height: 50px;
+        font-size: 16px;
+    }
+
+    .floor-buttons {
+        flex-direction: row;
+        margin-right: 0;
+    }
+
+    .elevator-shaft {
+        width: 100%;
+        height: 50px;
+    }
+
+    .simulation-info {
+        flex-direction: column;
+        align-items: center;
+    }
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elevator Simulator - Model: minimax-m2.1 | Tool: copilot | Provider: openrouter-default</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="module" src="script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Elevator Simulator</h1>
+        
+        <div class="controls">
+            <button id="startSimulation">Start Simulation</button>
+            <button id="resetSimulation">Reset</button>
+        </div>
+
+        <div class="simulation-info">
+            <div class="info-item">
+                <span class="label">Status:</span>
+                <span id="simulationStatus">Idle</span>
+            </div>
+            <div class="info-item">
+                <span class="label">Total Requests:</span>
+                <span id="totalRequests">0</span>
+            </div>
+        </div>
+
+        <div class="building" id="building">
+            <!-- Floors and elevators will be generated here by JavaScript -->
+        </div>
+    </div>
+</body>
+</html>
