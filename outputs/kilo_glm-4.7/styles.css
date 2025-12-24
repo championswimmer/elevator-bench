@@ -1,0 +1,259 @@
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  background-color: #f0f0f0;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Header Styles */
+header {
+  text-align: center;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 2.5em;
+  color: #2c3e50;
+}
+
+/* Info Section Styles */
+#info {
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  padding: 15px;
+  margin: 20px auto;
+  max-width: 800px;
+  overflow-x: auto;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#info pre {
+  font-family: 'Courier New', monospace;
+  font-size: 0.9em;
+  white-space: pre-wrap;
+}
+
+/* Building Container Styles */
+#building {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  border: 3px solid #34495e;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Floor Styles */
+.floor {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #ecf0f1;
+  padding: 15px;
+  min-height: 80px;
+}
+
+.floor:last-child {
+  border-bottom: none;
+}
+
+.floor-number {
+  font-size: 1.2em;
+  font-weight: bold;
+  flex: 1;
+  text-align: center;
+}
+
+.floor-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.floor-button {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: white;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.floor-button.up {
+  background-color: #27ae60;
+}
+
+.floor-button.down {
+  background-color: #e74c3c;
+}
+
+.floor-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.floor-button.active {
+  opacity: 0.6;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.floor-button.disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* Elevator Shaft and Elevators */
+.elevator-shaft {
+  position: relative;
+  width: 80px;
+  height: 100%;
+  background-color: #bdc3c7;
+  border-left: 2px solid #34495e;
+}
+
+.elevator {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  border: 2px solid #2c3e50;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: top 1s ease-in-out;
+  font-size: 0.8em;
+  font-weight: bold;
+  color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.elevator:nth-child(1) { background-color: #3498db; }
+.elevator:nth-child(2) { background-color: #9b59b6; }
+.elevator:nth-child(3) { background-color: #1abc9c; }
+.elevator:nth-child(4) { background-color: #f39c12; }
+.elevator:nth-child(5) { background-color: #e67e22; }
+
+.elevator-number {
+  margin-bottom: 5px;
+}
+
+.elevator-direction {
+  font-size: 1.2em;
+  margin-bottom: 5px;
+}
+
+.elevator-direction.up::before { content: "↑"; }
+.elevator-direction.down::before { content: "↓"; }
+.elevator-direction.idle::before { content: "—"; }
+
+.elevator-floor {
+  font-size: 0.9em;
+}
+
+.elevator-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.elevator-button {
+  width: 25px;
+  height: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 3px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+  font-size: 0.7em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.elevator-button:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.elevator-button.active {
+  background-color: #f1c40f;
+  color: #2c3e50;
+}
+
+.elevator-button.disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  #building {
+    width: 95%;
+    flex-direction: column;
+  }
+
+  .floor {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .floor-buttons {
+    justify-content: center;
+  }
+
+  .elevator-shaft {
+    width: 100%;
+    height: 80px;
+    border-left: none;
+    border-top: 2px solid #34495e;
+  }
+
+  .elevator {
+    position: static;
+    display: inline-flex;
+    margin: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 2em;
+  }
+
+  .floor-button {
+    width: 40px;
+    height: 40px;
+    font-size: 1em;
+  }
+
+  .elevator {
+    width: 60px;
+    height: 60px;
+  }
+
+  .elevator-button {
+    width: 20px;
+    height: 20px;
+    font-size: 0.6em;
+  }
+}
