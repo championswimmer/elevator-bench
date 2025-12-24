@@ -1,0 +1,590 @@
+/* Elevator Simulator Styles */
+
+/* CSS Variables for consistent color scheme */
+:root {
+    --primary-color: #667eea;
+    --secondary-color: #764ba2;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+    --info-color: #007bff;
+    --warning-color: #ffc107;
+    --light-bg: #f8f9fa;
+    --dark-bg: #343a40;
+    --border-color: #dee2e6;
+    --text-primary: #495057;
+    --text-secondary: #6c757d;
+    --white: #ffffff;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 2px 10px rgba(0, 0, 0, 0.1);
+    --transition: all 0.2s ease;
+    --border-radius: 10px;
+    --border-radius-sm: 8px;
+    --border-radius-xs: 5px;
+}
+
+/* Reset and base styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    background-color: #f5f5f5;
+    padding: 20px;
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+/* Header Styles */
+.header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+    padding: 15px 25px;
+    border-radius: var(--border-radius);
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+}
+
+.header h1 {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.header .info {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+/* Main Container */
+.simulator-container {
+    display: flex;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+/* Section Styles */
+.building-section,
+.elevators-section {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 20px;
+    box-shadow: var(--shadow-lg);
+}
+
+.building-section {
+    flex: 1;
+    min-width: 300px;
+}
+
+.elevators-section {
+    flex: 2;
+    min-width: 400px;
+}
+
+.building-section h2,
+.elevators-section h2 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: #333;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 10px;
+}
+
+/* Floors Container */
+.floors-container {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 5px;
+}
+
+/* Floor Styles */
+.floor {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 15px;
+    background: var(--light-bg);
+    border-radius: var(--border-radius-sm);
+    border: 1px solid var(--border-color);
+    transition: var(--transition);
+}
+
+.floor:hover {
+    background: #e9ecef;
+}
+
+.floor-number {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--text-primary);
+    min-width: 40px;
+    text-align: center;
+}
+
+/* Floor Buttons Container */
+.floor-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+/* Floor Request Buttons */
+.floor-btn {
+    width: 45px;
+    height: 45px;
+    border: none;
+    border-radius: var(--border-radius-sm);
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.floor-btn.up {
+    background: var(--success-color);
+}
+
+.floor-btn.up:hover {
+    background: #218838;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(40, 167, 69, 0.3);
+}
+
+.floor-btn.up:active,
+.floor-btn.up.active {
+    background: #1e7e34;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+    transform: translateY(0);
+}
+
+.floor-btn.down {
+    background: var(--danger-color);
+}
+
+.floor-btn.down:hover {
+    background: #c82333;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(220, 53, 69, 0.3);
+}
+
+.floor-btn.down:active,
+.floor-btn.down.active {
+    background: #bd2130;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+    transform: translateY(0);
+}
+
+.floor-btn:disabled {
+    background: #adb5bd;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.floor-btn:disabled:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+/* Elevator Display/Indicators */
+.elevator-display {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    max-width: 200px;
+}
+
+.elevator-indicator {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--light-bg);
+    border-radius: var(--border-radius-xs);
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    border: 2px solid var(--border-color);
+    transition: var(--transition);
+}
+
+.elevator-indicator.moving {
+    background: var(--success-color);
+    color: white;
+    border-color: #1e7e34;
+    box-shadow: 0 0 8px rgba(40, 167, 69, 0.4);
+}
+
+.elevator-indicator.selected {
+    background: var(--info-color);
+    color: white;
+    border-color: #0056b3;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.4);
+}
+
+/* Elevators Grid */
+.elevators-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+/* Individual Elevator */
+.elevator {
+    background: var(--light-bg);
+    border-radius: var(--border-radius);
+    padding: 15px;
+    border: 2px solid var(--border-color);
+    transition: var(--transition);
+}
+
+.elevator:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+}
+
+/* Elevator Header */
+.elevator-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.elevator-title {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+}
+
+.elevator-status {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    transition: var(--transition);
+}
+
+.elevator-status.idle {
+    background: var(--light-bg);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+
+.elevator-status.moving {
+    background: var(--success-color);
+    color: white;
+    box-shadow: 0 2px 8px rgba(40, 167, 69, 0.3);
+}
+
+/* Elevator Visual/Shaft */
+.elevator-visual {
+    height: 120px;
+    background: #dee2e6;
+    border-radius: var(--border-radius-sm);
+    margin-bottom: 15px;
+    position: relative;
+    overflow: hidden;
+    border: 3px solid #adb5bd;
+}
+
+.elevator-shaft {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    background: #6c757d;
+    border-radius: var(--border-radius-xs) var(--border-radius-xs) 0 0;
+    transition: height 0.3s ease;
+    border: 2px solid #5a6268;
+}
+
+/* Elevator Car */
+.elevator-car {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 40px;
+    background: linear-gradient(180deg, var(--warning-color) 0%, #e0a800 100%);
+    border-radius: var(--border-radius-xs) var(--border-radius-xs) 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #333;
+    transition: bottom 0.5s ease, background 0.3s ease;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+    border: 2px solid #d39e00;
+}
+
+.elevator-car.moving {
+    background: linear-gradient(180deg, var(--success-color) 0%, #1e7e34 100%);
+    color: white;
+    border-color: #1e7e34;
+    box-shadow: 0 -2px 10px rgba(40, 167, 69, 0.4);
+}
+
+/* Floor Markers */
+.floor-markers {
+    position: absolute;
+    right: 10px;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 5px 0;
+}
+
+.floor-marker {
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+/* Elevator Interior Buttons Grid */
+.elevator-buttons {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+}
+
+.elevator-btn {
+    aspect-ratio: 1;
+    border: none;
+    border-radius: var(--border-radius-xs);
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: var(--transition);
+    background: var(--light-bg);
+    color: var(--text-primary);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.elevator-btn:hover {
+    background: #dee2e6;
+    transform: scale(1.05);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.elevator-btn:active,
+.elevator-btn.selected {
+    background: var(--info-color);
+    color: white;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2), 0 0 8px rgba(0, 123, 255, 0.3);
+    transform: scale(0.95);
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    margin-top: 20px;
+    padding: 15px;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    border-top: 1px solid var(--border-color);
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .simulator-container {
+        flex-direction: column;
+    }
+
+    .building-section,
+    .elevators-section {
+        flex: 1;
+        width: 100%;
+    }
+
+    .elevators-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .floor {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .floor-buttons {
+        order: 2;
+    }
+
+    .floor-number {
+        order: 1;
+    }
+
+    .elevator-display {
+        order: 3;
+        width: 100%;
+        justify-content: flex-end;
+        max-width: none;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .header {
+        padding: 12px 15px;
+    }
+
+    .header h1 {
+        font-size: 1.2rem;
+    }
+
+    .building-section,
+    .elevators-section {
+        padding: 15px;
+    }
+
+    .floor-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    .elevator-visual {
+        height: 100px;
+    }
+
+    .elevator-buttons {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 3px;
+    }
+
+    .elevator-btn {
+        font-size: 0.9rem;
+    }
+}
+
+/* Animations */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(40, 167, 69, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(40, 167, 69, 0);
+    }
+}
+
+.elevator-indicator.moving {
+    animation: pulse 1.5s infinite;
+}
+
+/* Direction Arrows */
+.direction-indicator {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    transition: var(--transition);
+}
+
+.direction-indicator.up {
+    color: var(--success-color);
+}
+
+.direction-indicator.down {
+    color: var(--danger-color);
+}
+
+/* Loading State */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* Tooltip */
+[data-tooltip] {
+    position: relative;
+}
+
+[data-tooltip]::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 5px 10px;
+    background: var(--dark-bg);
+    color: white;
+    font-size: 0.8rem;
+    border-radius: var(--border-radius-xs);
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+    z-index: 100;
+}
+
+[data-tooltip]:hover::after {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--light-bg);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--text-secondary);
+}
+
+/* Focus States for Accessibility */
+button:focus,
+.floor-btn:focus,
+.elevator-btn:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+button:focus:not(:focus-visible),
+.floor-btn:focus:not(:focus-visible),
+.elevator-btn:focus:not(:focus-visible) {
+    outline: none;
+}
+
+button:focus-visible,
+.floor-btn:focus-visible,
+.elevator-btn:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}

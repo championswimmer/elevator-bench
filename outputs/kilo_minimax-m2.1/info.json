@@ -1,0 +1,17 @@
+{
+  "config": {
+    "tool": "kilo",
+    "tool_mode": "orchestrator",
+    "model": "minimax-m2.1",
+    "provider": "kilo-gateway",
+    "port": "8833"
+  },
+  "results": {
+    "context_window": "204800",
+    "context_fill": "21400",
+    "dollar_cost": "0.02",
+    "time_taken": "00:06:48",
+    "tokens_sent": "164500",
+    "tokens_received": "3900"
+  }
+}
