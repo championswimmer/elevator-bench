@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elevator Simulator - kilo:orchestrator:minimax-m2.1:kilo-gateway</title>
+    
+<link rel="stylesheet" crossorigin href="./index-3p0n4tfk.css"><script type="module" crossorigin src="./index-y1e0g89h.js"></script></head>
+<body>
+    <header class="header">
+        <h1>Elevator Simulator</h1>
+        <p class="info">tool: kilo | tool_mode: orchestrator | model: minimax-m2.1 | provider: kilo-gateway | port: 8833</p>
+    </header>
+
+    <main class="simulator-container">
+        <section class="building-section">
+            <h2>Building Floors</h2>
+            <div class="floors-container" id="floors-container">
+                <!-- Floors will be generated here -->
+            </div>
+        </section>
+
+        <section class="elevators-section">
+            <h2>Elevators</h2>
+            <div class="elevators-grid" id="elevators-grid">
+                <!-- Elevators will be generated here -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Elevator Simulator - Click floor buttons to call elevators, elevator buttons to select destination</p>
+    </footer>
+
+    <script type="module">
+        const CONFIG = {
+            floors: 10,
+            elevators: 4,
+            port: 8833
+        };
+
+        // State management
+        const state = {
+            floors: {},
+            elevators: {}
+        };
+
+        // Initialize state
+        for (let i = 0; i < CONFIG.floors; i++) {
+            state.floors[i] = { up: false, down: false };
+        }
+
+        for (let i = 0; i < CONFIG.elevators; i++) {
+            state.elevators[i] = {
+                currentFloor: 0,
+                targetFloors: [],
+                direction: 'idle',
+                status: 'idle'
+            };
+        }
+
+        // Generate floors
+        function generateFloors() {
+            const container = document.getElementById('floors-container');
+            
+            for (let floor = CONFIG.floors - 1; floor >= 0; floor--) {
+                const floorDiv = document.createElement('div');
+                floorDiv.className = 'floor';
+                floorDiv.id = `floor-${floor}`;
+                
+                const floorNumber = document.createElement('div');
+                floorNumber.className = 'floor-number';
+                floorNumber.textContent = floor;
+                
+                const floorButtons = document.createElement('div');
+                floorButtons.className = 'floor-buttons';
+                
+                // Up button (not for top floor)
+                if (floor < CONFIG.floors - 1) {
+                    const upBtn = document.createElement('button');
+                    upBtn.className = 'floor-btn up';
+                    upBtn.textContent = '↑';
+                    upBtn.id = `floor-${floor}-up`;
+                    upBtn.addEventListener('click', () => requestElevator(floor, 'up'));
+                    floorButtons.appendChild(upBtn);
+                }
+                
+                // Down button (not for bottom floor)
+                if (floor > 0) {
+                    const downBtn = document.createElement('button');
+                    downBtn.className = 'floor-btn down';
+                    downBtn.textContent = '↓';
+                    downBtn.id = `floor-${floor}-down`;
+                    downBtn.addEventListener('click', () => requestElevator(floor, 'down'));
+                    floorButtons.appendChild(downBtn);
+                }
+                
+                const elevatorDisplay = document.createElement('div');
+                elevatorDisplay.className = 'elevator-display';
+                elevatorDisplay.id = `floor-${floor}-elevators`;
+                
+                for (let elev = 0; elev < CONFIG.elevators; elev++) {
+                    const indicator = document.createElement('div');
+                    indicator.className = 'elevator-indicator';
+                    indicator.id = `elev-${elev}-at-floor-${floor}`;
+                    indicator.textContent = '-';
+                    elevatorDisplay.appendChild(indicator);
+                }
+                
+                floorDiv.appendChild(floorNumber);
+                floorDiv.appendChild(floorButtons);
+                floorDiv.appendChild(elevatorDisplay);
+                container.appendChild(floorDiv);
+            }
+        }
+
+        // Generate elevators
+        function generateElevators() {
+            const container = document.getElementById('elevators-grid');
+            
+            for (let elev = 0; elev < CONFIG.elevators; elev++) {
+                const elevatorDiv = document.createElement('div');
+                elevatorDiv.className = 'elevator';
+                elevatorDiv.id = `elevator-${elev}`;
+                
+                const header = document.createElement('div');
+                header.className = 'elevator-header';
+                
+                const title = document.createElement('div');
+                title.className = 'elevator-title';
+                title.textContent = `Elevator ${elev}`;
+                
+                const status = document.createElement('div');
+                status.className = 'elevator-status idle';
+                status.id = `elevator-${elev}-status`;
+                status.textContent = 'Idle';
+                
+                header.appendChild(title);
+                header.appendChild(status);
+                
+                const visual = document.createElement('div');
+                visual.className = 'elevator-visual';
+                
+                // Floor markers
+                const markers = document.createElement('div');
+                markers.className = 'floor-markers';
+                for (let f = CONFIG.floors - 1; f >= 0; f--) {
+                    const marker = document.createElement('div');
+                    marker.className = 'floor-marker';
+                    marker.textContent = f;
+                    markers.appendChild(marker);
+                }
+                visual.appendChild(markers);
+                
+                const shaft = document.createElement('div');
+                shaft.className = 'elevator-shaft';
+                shaft.id = `elevator-${elev}-shaft`;
+                shaft.style.height = `${(CONFIG.floors * 12)}px`;
+                visual.appendChild(shaft);
+                
+                const car = document.createElement('div');
+                car.className = 'elevator-car';
+                car.id = `elevator-${elev}-car`;
+                car.textContent = '0';
+                car.style.bottom = '0px';
+                visual.appendChild(car);
+                
+                const buttons = document.createElement('div');
+                buttons.className = 'elevator-buttons';
+                
+                for (let floor = 0; floor < CONFIG.floors; floor++) {
+                    const btn = document.createElement('button');
+                    btn.className = 'elevator-btn';
+                    btn.textContent = floor;
+                    btn.id = `elevator-${elev}-btn-${floor}`;
+                    btn.addEventListener('click', () => selectFloor(elev, floor));
+                    buttons.appendChild(btn);
+                }
+                
+                elevatorDiv.appendChild(header);
+                elevatorDiv.appendChild(visual);
+                elevatorDiv.appendChild(buttons);
+                container.appendChild(elevatorDiv);
+            }
+        }
+
+        // Request elevator from floor
+        function requestElevator(floor, direction) {
+            const btn = document.getElementById(`floor-${floor}-${direction}`);
+            if (btn.classList.contains('active')) return;
+            
+            btn.classList.add('active');
+            state.floors[floor][direction] = true;
+            
+            // Send request to server
+            fetch(`http://localhost:${CONFIG.port}/request`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ floor, direction, type: 'floor_request' })
+            }).catch(err => console.log('Server not available, simulating locally'));
+        }
+
+        // Select floor in elevator
+        function selectFloor(elevator, floor) {
+            const btn = document.getElementById(`elevator-${elevator}-btn-${floor}`);
+            btn.classList.toggle('selected');
+            
+            if (btn.classList.contains('selected')) {
+                state.elevators[elevator].targetFloors.push(floor);
+            } else {
+                const index = state.elevators[elevator].targetFloors.indexOf(floor);
+                if (index > -1) {
+                    state.elevators[elevator].targetFloors.splice(index, 1);
+                }
+            }
+            
+            // Send request to server
+            fetch(`http://localhost:${CONFIG.port}/request`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ elevator, floor, type: 'elevator_request' })
+            }).catch(err => console.log('Server not available, simulating locally'));
+        }
+
+        // Update UI based on state
+        function updateUI() {
+            // Update elevator positions
+            for (let elev = 0; elev < CONFIG.elevators; elev++) {
+                const car = document.getElementById(`elevator-${elev}-car`);
+                const status = document.getElementById(`elevator-${elev}-status`);
+                const stateElev = state.elevators[elev];
+                
+                const floorHeight = 120 / CONFIG.floors;
+                car.style.bottom = `${stateElev.currentFloor * floorHeight}px`;
+                car.textContent = stateElev.currentFloor;
+                
+                if (stateElev.status === 'moving') {
+                    car.classList.add('moving');
+                    status.className = 'elevator-status moving';
+                    status.textContent = stateElev.direction === 'up' ? '↑' : '↓';
+                } else {
+                    car.classList.remove('moving');
+                    status.className = 'elevator-status idle';
+                    status.textContent = 'Idle';
+                }
+                
+                // Update elevator indicators on floors
+                for (let floor = 0; floor < CONFIG.floors; floor++) {
+                    const indicator = document.getElementById(`elev-${elev}-at-floor-${floor}`);
+                    if (indicator) {
+                        if (stateElev.currentFloor === floor) {
+                            indicator.textContent = elev;
+                            indicator.classList.add('moving');
+                        } else {
+                            indicator.textContent = '-';
+                            indicator.classList.remove('moving');
+                        }
+                    }
+                }
+            }
+        }
+
+        // Initialize
+        generateFloors();
+        generateElevators();
+        updateUI();
+
+        // Poll for updates
+        setInterval(() => {
+            fetch(`http://localhost:${CONFIG.port}/state`)
+                .then(response => response.json())
+                .then(data => {
+                    Object.assign(state, data);
+                    updateUI();
+                })
+                .catch(() => {});
+        }, 100);
+
+        // Expose state for external use
+        window.elevatorState = state;
+        window.elevatorConfig = CONFIG;
+    </script>
+</body>
+</html>
