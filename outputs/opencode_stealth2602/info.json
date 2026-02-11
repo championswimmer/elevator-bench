@@ -1,0 +1,17 @@
+{
+  "config": {
+    "tool": "opencode",
+    "tool_mode": "build",
+    "model": "stealth-2602",
+    "provider": "stealth",
+    "port": "8345"
+  },
+  "results": {
+    "context_window": "204800",
+    "context_fill": "32500",
+    "dollar_cost": "0.14",
+    "time_taken": "00:02:15",
+    "tokens_sent": "37000",
+    "tokens_received": "14000"
+  }
+}
