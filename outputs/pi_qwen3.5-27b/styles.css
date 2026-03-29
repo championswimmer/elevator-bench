@@ -1,0 +1,289 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.info-panel {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.info-panel h2 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 24px;
+}
+
+.info-content p {
+    color: #555;
+    margin: 8px 0;
+    font-size: 14px;
+}
+
+.building {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.floors-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.floor {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.floor:hover {
+    background: #e9ecef;
+}
+
+.floor-number {
+    font-weight: bold;
+    color: #495057;
+    min-width: 50px;
+    font-size: 18px;
+}
+
+.floor-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.floor-buttons button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 500;
+}
+
+.floor-buttons button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.floor-buttons button.up {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.floor-buttons button.down {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+}
+
+.floor-buttons button.up:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.floor-buttons button.down:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(245, 87, 108, 0.4);
+}
+
+.elevators-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.elevator {
+    width: 80px;
+    height: 200px;
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    transition: all 0.5s ease;
+}
+
+.elevator.active {
+    box-shadow: 0 0 30px rgba(79, 172, 254, 0.6);
+}
+
+.elevator-door {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    right: 10px;
+    height: 40px;
+    background: #333;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.elevator-door.open {
+    height: 80px;
+    top: 30px;
+}
+
+.elevator-door.left {
+    left: 10px;
+}
+
+.elevator-door.right {
+    right: 10px;
+}
+
+.elevator-indicator {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.elevator-buttons {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+}
+
+.elevator-buttons button {
+    width: 25px;
+    height: 25px;
+    border: none;
+    border-radius: 5px;
+    background: #333;
+    color: white;
+    font-size: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.elevator-buttons button:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.elevator-buttons button.active {
+    background: #4facfe;
+    box-shadow: 0 0 10px rgba(79, 172, 254, 0.6);
+}
+
+.elevator-buttons button.selected {
+    background: #f5576c;
+    box-shadow: 0 0 10px rgba(245, 87, 108, 0.6);
+}
+
+.elevator-status {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 10px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.elevator.moving {
+    animation: elevatorMove 0.5s ease-in-out;
+}
+
+@keyframes elevatorMove {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.elevator.opening {
+    animation: elevatorOpen 0.3s ease-in-out;
+}
+
+@keyframes elevatorOpen {
+    0%, 100% {
+        height: 200px;
+    }
+    50% {
+        height: 180px;
+    }
+}
+
+.elevator.closing {
+    animation: elevatorClose 0.3s ease-in-out;
+}
+
+@keyframes elevatorClose {
+    0%, 100% {
+        height: 180px;
+    }
+    50% {
+        height: 200px;
+    }
+}
+
+.elevator.carrying {
+    background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+}
+
+.elevator.carrying.active {
+    box-shadow: 0 0 30px rgba(67, 233, 123, 0.6);
+}
+
+@media (max-width: 768px) {
+    .elevator {
+        width: 60px;
+        height: 150px;
+    }
+    
+    .elevator-buttons {
+        bottom: 40px;
+    }
+    
+    .elevator-buttons button {
+        width: 20px;
+        height: 20px;
+        font-size: 8px;
+    }
+    
+    .floor-buttons button {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+}

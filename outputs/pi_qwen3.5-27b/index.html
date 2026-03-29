@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elevator Simulator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="info-panel">
+            <h2>Elevator Simulator</h2>
+            <div class="info-content">
+                <p><strong>Model:</strong> qwen3.5-27b</p>
+                <p><strong>Provider:</strong> lmstudio-local-beelink-gtr9pro</p>
+                <p><strong>Tool:</strong> pi</p>
+                <p><strong>Port:</strong> 4499</p>
+            </div>
+        </div>
+        
+        <div class="building">
+            <div class="floors-container" id="floorsContainer"></div>
+            <div class="elevators-container" id="elevatorsContainer"></div>
+        </div>
+    </div>
+    
+    <script type="module" src="script.ts"></script>
+</body>
+</html>
