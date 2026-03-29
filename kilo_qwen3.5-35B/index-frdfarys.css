@@ -1,0 +1,246 @@
+/* styles.css */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  justify-content: center;
+  align-items:  center;
+  min-height: 100vh;
+  padding: 20px;
+  font-family: Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items:  center;
+  gap: 20px;
+}
+
+h1 {
+  color: #e94560;
+  text-shadow: 2px 2px 4px #0000004d;
+  font-size: 2.5rem;
+}
+
+.building {
+  display: flex;
+  position: relative;
+  background: linear-gradient(#2d2d44 0%, #1a1a2e 100%);
+  border: 4px solid #e94560;
+  border-radius: 10px;
+  flex-direction: column;
+  gap: 5px;
+  padding: 10px;
+}
+
+.floor-row {
+  display: flex;
+  position: relative;
+  background: #ffffff0d;
+  border-radius: 8px;
+  align-items:  center;
+  gap: 10px;
+  padding: 8px 15px;
+}
+
+.floor-number {
+  display: flex;
+  color: #fff;
+  background: #0f3460;
+  border: 2px solid #e94560;
+  border-radius: 50%;
+  justify-content: center;
+  align-items:  center;
+  width: 40px;
+  height: 40px;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.floor-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.floor-btn {
+  color: #e94560;
+  cursor: pointer;
+  background: linear-gradient(145deg, #1a1a2e, #16213e);
+  border: 2px solid #e94560;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  transition: all .3s;
+  font-size: 1.2rem;
+  font-weight: bold;
+  box-shadow: 0 4px 6px #0000004d;
+}
+
+.floor-btn:hover:not(:disabled) {
+  transform: scale(1.1);
+  box-shadow: 0 6px 12px #e9456066;
+}
+
+.floor-btn:disabled {
+  opacity: .4;
+  cursor: not-allowed;
+}
+
+.floor-btn.active {
+  color: #fff;
+  animation: pulse 1s infinite;
+  background: #e94560;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 #e94560b3;
+  }
+
+  50% {
+    box-shadow: 0 0 0 10px #e9456000;
+  }
+}
+
+.elevator-shaft {
+  position: relative;
+  overflow: hidden;
+  background: #0000004d;
+  border-radius: 5px;
+  width: 80px;
+  height: 100%;
+}
+
+.elevator {
+  position: absolute;
+  display: flex;
+  z-index: 10;
+  background: linear-gradient(145deg, #e94560, #c73e54);
+  border-radius: 8px;
+  flex-direction: column;
+  justify-content: center;
+  align-items:  center;
+  gap: 3px;
+  width: 70px;
+  height: 60px;
+  transition: top .5s;
+  left: 5px;
+  box-shadow: 0 4px 10px #00000080;
+}
+
+.elevator-number {
+  color: #fff;
+  font-size: .9rem;
+  font-weight: bold;
+}
+
+.elevator-destination {
+  color: #fff;
+  background: #0000004d;
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-size: .7rem;
+}
+
+.elevator-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  padding: 5px;
+}
+
+.elevator-floor-btn {
+  color: #fff;
+  cursor: pointer;
+  background: #ffffff4d;
+  border: none;
+  border-radius: 3px;
+  width: 18px;
+  height: 18px;
+  transition: all .2s;
+  font-size: .5rem;
+}
+
+.elevator-floor-btn:hover {
+  background: #ffffff80;
+}
+
+.elevator-floor-btn.active {
+  color: #e94560;
+  background: #fff;
+  font-weight: bold;
+}
+
+.elevator-idle {
+  background: linear-gradient(145deg, #4ecca3, #3db892);
+}
+
+.elevator-moving {
+  background: linear-gradient(145deg, #e94560, #c73e54);
+}
+
+.controls {
+  background: #ffffff0d;
+  border: 2px solid #e94560;
+  border-radius: 10px;
+  padding: 20px 30px;
+}
+
+.controls h2 {
+  color: #fff;
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+}
+
+#resetBtn {
+  color: #fff;
+  cursor: pointer;
+  background: linear-gradient(145deg, #e94560, #c73e54);
+  border: none;
+  border-radius: 25px;
+  padding: 12px 30px;
+  transition: all .3s;
+  font-size: 1rem;
+  font-weight: bold;
+  box-shadow: 0 4px 10px #e9456066;
+}
+
+#resetBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px #e9456099;
+}
+
+#resetBtn:active {
+  transform: translateY(0);
+}
+
+.status-panel {
+  background: #ffffff0d;
+  border: 2px solid #0f3460;
+  border-radius: 10px;
+  margin-top: 10px;
+  padding: 15px 20px;
+}
+
+.status-panel h3 {
+  color: #4ecca3;
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+}
+
+.status-item {
+  color: #fff;
+  margin: 5px 0;
+  font-size: .9rem;
+}
+
+.status-item span {
+  color: #e94560;
+  font-weight: bold;
+}
