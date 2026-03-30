@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elevator Simulator - Model: qwen_coder_opus | Provider: openrouter-default | Tool: kilo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Elevator Simulator</h1>
+            <div class="info-bar">
+                <span>Model: qwen_coder_opus</span>
+                <span>Provider: openrouter-default</span>
+                <span>Tool: kilo</span>
+            </div>
+        </header>
+        
+        <div class="building-container">
+            <!-- Floor buttons panel (left side) -->
+            <div class="floor-buttons-panel" id="floorButtonsPanel">
+                <h3>Floor Requests</h3>
+                <div id="floorButtonsContainer"></div>
+            </div>
+            
+            <!-- Building with floors and elevators -->
+            <div class="building" id="building">
+                <div class="floors-container" id="floorsContainer"></div>
+                <div class="elevators-container" id="elevatorsContainer"></div>
+            </div>
+            
+            <!-- Elevator control panels (right side) -->
+            <div class="elevator-panels-container" id="elevatorPanelsContainer"></div>
+        </div>
+        
+        <!-- Status display -->
+        <div class="status-panel">
+            <h3>Elevator Status</h3>
+            <div id="elevatorStatus"></div>
+        </div>
+        
+        <!-- Request queue display -->
+        <div class="queue-panel">
+            <h3>Pending Requests</h3>
+            <div id="requestQueue"></div>
+        </div>
+    </div>
+    
+    <script type="module" src="script.ts"></script>
+</body>
+</html>

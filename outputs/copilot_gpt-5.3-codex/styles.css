@@ -1,0 +1,262 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+header {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 28px;
+}
+
+.info {
+    display: flex;
+    gap: 30px;
+    color: #666;
+    font-size: 14px;
+}
+
+.info p {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.simulator {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 20px;
+}
+
+.building {
+    display: grid;
+    grid-template-columns: 80px 200px 300px;
+    gap: 15px;
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.floors-panel {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 8px;
+}
+
+.floor {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background: #f5f5f5;
+    border-radius: 6px;
+    min-height: 50px;
+    font-weight: 500;
+    color: #333;
+}
+
+.floor-label {
+    flex: 1;
+    text-align: center;
+    font-size: 12px;
+}
+
+.floor-buttons {
+    display: flex;
+    gap: 5px;
+}
+
+.floor-button {
+    width: 30px;
+    height: 30px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    background: white;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.floor-button:hover {
+    border-color: #667eea;
+    color: #667eea;
+}
+
+.floor-button.active {
+    background: #667eea;
+    color: white;
+    border-color: #667eea;
+}
+
+.elevators-shaft {
+    position: relative;
+    background: #e8e8e8;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.elevators-container {
+    position: relative;
+    height: 500px;
+}
+
+.elevator {
+    position: absolute;
+    width: 100%;
+    height: 45px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: top 0.5s linear;
+    border: 2px solid #5568d3;
+}
+
+.elevator-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+
+.elevator-id {
+    font-size: 12px;
+}
+
+.elevator-floor {
+    font-size: 16px;
+}
+
+.elevator-buttons-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.elevator-button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.elevator-label {
+    font-weight: bold;
+    color: white;
+    font-size: 12px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 5px;
+    border-radius: 4px;
+}
+
+.floor-selection-buttons {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+}
+
+.floor-selection-btn {
+    width: 100%;
+    padding: 8px 4px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    background: white;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.floor-selection-btn:hover {
+    border-color: #667eea;
+    background: #f0f0ff;
+}
+
+.floor-selection-btn.active {
+    background: #667eea;
+    color: white;
+    border-color: #667eea;
+}
+
+.controls {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.controls h2 {
+    font-size: 16px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.elevator-states {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.elevator-state {
+    padding: 10px;
+    background: #f5f5f5;
+    border-radius: 6px;
+    font-size: 12px;
+    border-left: 4px solid #667eea;
+}
+
+.elevator-state-id {
+    font-weight: bold;
+    color: #667eea;
+}
+
+.elevator-state-info {
+    color: #666;
+    margin-top: 3px;
+}
+
+@media (max-width: 900px) {
+    .simulator {
+        grid-template-columns: 1fr;
+    }
+
+    .building {
+        grid-template-columns: 1fr;
+    }
+
+    .floors-panel,
+    .elevators-shaft {
+        grid-column: 1;
+    }
+}

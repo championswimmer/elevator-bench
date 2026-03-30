@@ -1,0 +1,17 @@
+{
+  "config": {
+    "tool": "kilo",
+    "tool_mode": "standard",
+    "model": "qwen_coder_opus",
+    "provider": "openrouter-default",
+    "port": "8663"
+  },
+  "results": {
+    "context_window": "400000",
+    "context_fill": "",
+    "dollar_cost": "",
+    "time_taken": "",
+    "tokens_sent": "",
+    "tokens_received": ""
+  }
+}
