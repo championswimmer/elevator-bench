@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elevator Simulator</title>
+    
+<link rel="stylesheet" crossorigin href="./index-mj6hvz3t.css"><script type="module" crossorigin src="./index-crv27xgv.js"></script></head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Elevator Simulator</h1>
+            <div class="info">
+                <p><strong>Model:</strong> gpt-5.3-codex</p>
+                <p><strong>Tool:</strong> copilot</p>
+                <p><strong>Provider:</strong> copilot-default</p>
+            </div>
+        </header>
+
+        <div class="simulator">
+            <div class="building">
+                <div class="floors-container">
+                    <div id="floorsPanel" class="floors-panel"></div>
+                </div>
+
+                <div class="elevators-shaft">
+                    <div id="elevatorsContainer" class="elevators-container"></div>
+                </div>
+
+                <div class="elevator-buttons">
+                    <div id="elevatorButtonsContainer" class="elevator-buttons-container"></div>
+                </div>
+            </div>
+
+            <div class="controls">
+                <h2>Elevator States</h2>
+                <div id="elevatorStates" class="elevator-states"></div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { Building } from './script.ts';
+
+        const building = new Building(10, 4);
+        building.render();
+    </script>
+</body>
+</html>

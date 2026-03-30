@@ -1,0 +1,355 @@
+/* src/styles.css */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  justify-content: center;
+  align-items:  center;
+  min-height: 100vh;
+  padding: 20px;
+  font-family: Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#building-container {
+  display: flex;
+  overflow: hidden;
+  background: #0f0f23;
+  border-radius: 15px;
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px;
+  height: 80vh;
+  box-shadow: 0 20px 60px #00000080;
+}
+
+.floor-column {
+  display: flex;
+  border-right: 2px solid #1f1f3a;
+  flex-direction: column-reverse;
+  flex: 1;
+  gap: 5px;
+  padding: 20px 10px;
+}
+
+.floor {
+  display: flex;
+  position: relative;
+  background: #1a1a2e;
+  border-radius: 8px;
+  flex-direction: column;
+  flex: 1;
+  justify-content: center;
+  align-items:  center;
+  transition: all .3s;
+}
+
+.floor:hover {
+  background: #252545;
+}
+
+.floor-label {
+  position: absolute;
+  color: #6366f1;
+  font-size: 14px;
+  font-weight: bold;
+  left: 10px;
+}
+
+.floor-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.button {
+  color: #a0a0c0;
+  cursor: pointer;
+  display: flex;
+  background: #2d2d4a;
+  border: none;
+  border-radius: 50%;
+  justify-content: center;
+  align-items:  center;
+  width: 40px;
+  height: 40px;
+  transition: all .3s;
+  font-size: 18px;
+  box-shadow: 0 4px 10px #0000004d;
+}
+
+.button:hover {
+  background: #3d3d5a;
+  transform: scale(1.1);
+}
+
+.button.active {
+  color: #fff;
+  background: #6366f1;
+  box-shadow: 0 0 20px #6366f199;
+}
+
+.button.up:hover {
+  box-shadow: 0 0 15px #6366f166;
+}
+
+.button.down:hover {
+  box-shadow: 0 0 15px #ec489966;
+}
+
+.elevator-shaft {
+  display: flex;
+  position: relative;
+  flex: 1;
+  gap: 15px;
+  padding: 20px;
+}
+
+.elevator-shaft:before {
+  content: "";
+  position: absolute;
+  background: #1f1f3a;
+  width: 2px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.elevator {
+  position: absolute;
+  display: flex;
+  background: linear-gradient(#2d2d4a 0%, #1a1a2e 100%);
+  border: 2px solid #3d3d5a;
+  border-radius: 8px;
+  flex-direction: column;
+  flex: 1;
+  align-items:  center;
+  height: 120px;
+  padding: 10px;
+  transition: top .1s linear;
+  bottom: 0;
+  box-shadow: 0 10px 30px #00000080;
+}
+
+.elevator.moving-up {
+  border-color: #6366f1;
+  box-shadow: 0 0 20px #6366f14d;
+}
+
+.elevator.moving-down {
+  border-color: #ec4899;
+  box-shadow: 0 0 20px #ec48994d;
+}
+
+.elevator-display {
+  color: #0f0;
+  background: #000;
+  border: 2px solid #3d3d5a;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  padding: 5px 15px;
+  font-family: Courier New, monospace;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.elevator-doors {
+  display: flex;
+  gap: 2px;
+  width: 100%;
+  height: 60px;
+  margin-bottom: 10px;
+}
+
+.door {
+  background: linear-gradient(90deg, #1a1a2e 0%, #2d2d4a 100%);
+  border: 1px solid #3d3d5a;
+  border-radius: 4px;
+  flex: 1;
+  transition: transform .3s;
+}
+
+.door.left {
+  transform-origin: left;
+}
+
+.door.right {
+  transform-origin: right;
+}
+
+.door.open-left {
+  transform: translateX(-100%);
+}
+
+.door.open-right {
+  transform: translateX(100%);
+}
+
+.elevator-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+  width: 100%;
+}
+
+.floor-button {
+  aspect-ratio: 1;
+  color: #a0a0c0;
+  cursor: pointer;
+  background: #2d2d4a;
+  border: none;
+  border-radius: 4px;
+  width: 100%;
+  transition: all .2s;
+  font-size: 14px;
+}
+
+.floor-button:hover {
+  color: #fff;
+  background: #3d3d5a;
+}
+
+.floor-button.active {
+  color: #fff;
+  background: #6366f1;
+  box-shadow: 0 0 10px #6366f166;
+}
+
+.control-panel {
+  position: absolute;
+  display: flex;
+  background: #1a1a2e;
+  border-top: 2px solid #1f1f3a;
+  align-items:  center;
+  gap: 15px;
+  padding: 15px 20px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.control-panel button {
+  color: #fff;
+  cursor: pointer;
+  background: #6366f1;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  transition: all .3s;
+  font-size: 14px;
+  font-weight: bold;
+  box-shadow: 0 4px 10px #0000004d;
+}
+
+.control-panel button:hover {
+  background: #4f46e5;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px #0006;
+}
+
+.control-panel button:active {
+  transform: translateY(0);
+}
+
+.simulation-info {
+  display: flex;
+  color: #a0a0c0;
+  gap: 20px;
+  margin-left: auto;
+  font-size: 14px;
+}
+
+.simulation-info div {
+  display: flex;
+  align-items:  center;
+  gap: 5px;
+}
+
+.simulation-info div:before {
+  content: "";
+  background: #6366f1;
+  border-radius: 50%;
+  width: 8px;
+  height: 8px;
+}
+
+@media (max-width: 768px) {
+  #building-container {
+    flex-direction: column;
+    height: 90vh;
+  }
+
+  .floor-column {
+    border-bottom: 2px solid #1f1f3a;
+    border-right: none;
+    flex-flow: wrap;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .floor {
+    flex: none;
+    width: 80px;
+    height: 80px;
+    padding: 10px;
+  }
+
+  .floor-label {
+    position: static;
+    margin-bottom: 5px;
+    font-size: 12px;
+  }
+
+  .floor-buttons {
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 0;
+  }
+
+  .button {
+    width: 30px;
+    height: 30px;
+    font-size: 14px;
+  }
+
+  .elevator-shaft {
+    flex-direction: column;
+    flex: 1;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .elevator {
+    width: 100%;
+    height: 80px;
+  }
+
+  .elevator-display {
+    padding: 3px 10px;
+    font-size: 14px;
+  }
+
+  .elevator-doors {
+    height: 40px;
+  }
+
+  .floor-button {
+    font-size: 12px;
+  }
+
+  .control-panel {
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .simulation-info {
+    justify-content: center;
+    width: 100%;
+    margin-left: 0;
+  }
+}
