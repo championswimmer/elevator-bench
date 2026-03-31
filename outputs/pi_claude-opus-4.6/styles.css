@@ -1,0 +1,420 @@
+/* ===== Elevator Simulator Styles ===== */
+
+:root {
+  --bg-color: #1a1a2e;
+  --surface-color: #16213e;
+  --surface-light: #1f3460;
+  --accent-color: #e94560;
+  --accent-glow: rgba(233, 69, 96, 0.4);
+  --success-color: #0f3460;
+  --text-color: #eee;
+  --text-dim: #8892b0;
+  --elevator-color: #e94560;
+  --shaft-bg: #0f0f23;
+  --floor-line: #2a2a4a;
+  --btn-bg: #2a2a4a;
+  --btn-active: #e94560;
+  --door-color: #ffd700;
+  --font-mono: 'Courier New', Courier, monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: var(--bg-color);
+  color: var(--text-color);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 1.8rem;
+  margin-bottom: 4px;
+  color: var(--accent-color);
+  text-shadow: 0 0 20px var(--accent-glow);
+  letter-spacing: 2px;
+}
+
+.info-bar {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  margin-bottom: 20px;
+  font-family: var(--font-mono);
+  letter-spacing: 1px;
+}
+
+/* ===== Main Layout ===== */
+
+.simulator {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.building-container {
+  display: flex;
+  gap: 0;
+  background: var(--surface-color);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--floor-line);
+  flex: 1;
+}
+
+/* ===== Floors (left side) ===== */
+
+#floors {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-right: 12px;
+}
+
+.floor {
+  display: flex;
+  align-items: center;
+  height: 52px;
+  border-bottom: 1px solid var(--floor-line);
+  padding: 0 8px;
+  gap: 8px;
+}
+
+.floor:first-child {
+  border-top: 1px solid var(--floor-line);
+}
+
+.floor-label {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  width: 28px;
+  text-align: center;
+}
+
+.floor-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.hall-btn {
+  width: 28px;
+  height: 22px;
+  border: 1px solid var(--floor-line);
+  border-radius: 4px;
+  background: var(--btn-bg);
+  color: var(--text-dim);
+  font-size: 0.65rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hall-btn:hover {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+  box-shadow: 0 0 8px var(--accent-glow);
+}
+
+.hall-btn.active {
+  background: var(--accent-color);
+  color: white;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 12px var(--accent-glow);
+  animation: pulse-btn 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-btn {
+  0%, 100% { box-shadow: 0 0 8px var(--accent-glow); }
+  50% { box-shadow: 0 0 16px var(--accent-glow); }
+}
+
+/* ===== Elevator Shafts ===== */
+
+#elevator-shafts {
+  display: flex;
+  gap: 8px;
+}
+
+.shaft {
+  width: 60px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--shaft-bg);
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid var(--floor-line);
+}
+
+.shaft-label {
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  padding: 4px 0;
+  background: var(--surface-light);
+  border-bottom: 1px solid var(--floor-line);
+}
+
+.shaft-cell {
+  height: 52px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative;
+  transition: background 0.3s ease;
+}
+
+.shaft-cell.destination {
+  background: rgba(233, 69, 96, 0.1);
+}
+
+.shaft-cell.destination::after {
+  content: '•';
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--accent-color);
+  font-size: 1rem;
+}
+
+.shaft-cell.current {
+  background: rgba(233, 69, 96, 0.05);
+}
+
+/* ===== Elevator Car ===== */
+
+.elevator-car {
+  position: absolute;
+  bottom: 0;
+  left: 3px;
+  right: 3px;
+  height: 46px;
+  background: linear-gradient(135deg, #e94560, #c23152);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: bottom 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 2px 12px rgba(233, 69, 96, 0.4);
+  z-index: 10;
+  user-select: none;
+}
+
+.elevator-car:hover {
+  box-shadow: 0 2px 20px rgba(233, 69, 96, 0.6);
+}
+
+.elevator-car.door-open {
+  background: linear-gradient(135deg, #ffd700, #f0c040);
+  box-shadow: 0 2px 16px rgba(255, 215, 0, 0.5);
+  animation: door-flash 0.4s ease;
+}
+
+.elevator-car.door-open .car-id,
+.elevator-car.door-open .car-direction {
+  color: #1a1a2e;
+}
+
+@keyframes door-flash {
+  0% { transform: scaleX(1); }
+  50% { transform: scaleX(0.6); }
+  100% { transform: scaleX(1); }
+}
+
+.elevator-car.moving {
+  box-shadow: 0 4px 20px rgba(233, 69, 96, 0.6);
+}
+
+.car-id {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: white;
+}
+
+.car-direction {
+  font-size: 0.55rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1;
+}
+
+/* ===== Elevator Internal Panel ===== */
+
+.panel-container {
+  background: var(--surface-color);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--floor-line);
+  width: 200px;
+  flex-shrink: 0;
+}
+
+.panel-container h3 {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.panel-tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 12px;
+}
+
+.panel-tab {
+  flex: 1;
+  padding: 6px 0;
+  border: 1px solid var(--floor-line);
+  border-radius: 4px;
+  background: var(--btn-bg);
+  color: var(--text-dim);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.panel-tab:hover {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+}
+
+.panel-tab.active {
+  background: var(--accent-color);
+  color: white;
+  border-color: var(--accent-color);
+}
+
+.panel-display {
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #0f0;
+  background: #0a0a1a;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 12px;
+  border: 1px solid var(--floor-line);
+  text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.panel-display.up::after {
+  content: ' ▲';
+  font-size: 1rem;
+  color: #0f0;
+}
+
+.panel-display.down::after {
+  content: ' ▼';
+  font-size: 1rem;
+  color: #0f0;
+}
+
+.panel-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+
+.panel-btn {
+  padding: 10px 0;
+  border: 1px solid var(--floor-line);
+  border-radius: 6px;
+  background: var(--btn-bg);
+  color: var(--text-color);
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.panel-btn:hover {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+  box-shadow: 0 0 8px var(--accent-glow);
+}
+
+.panel-btn.active {
+  background: var(--accent-color);
+  color: white;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 12px var(--accent-glow);
+}
+
+.panel-btn.current {
+  border-color: #0f0;
+  color: #0f0;
+  box-shadow: 0 0 8px rgba(0, 255, 0, 0.3);
+}
+
+/* ===== Status Bar ===== */
+
+.status-bar {
+  margin-top: 16px;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.status-item {
+  background: var(--surface-color);
+  border: 1px solid var(--floor-line);
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+}
+
+.status-item .label {
+  color: var(--text-dim);
+  margin-right: 6px;
+}
+
+.status-item .value {
+  color: var(--accent-color);
+  font-weight: 700;
+}
+
+/* ===== Responsive ===== */
+
+@media (max-width: 768px) {
+  .simulator {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .panel-container {
+    width: 100%;
+    max-width: 300px;
+  }
+}

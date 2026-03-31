@@ -1,0 +1,96 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#info {
+    font-size: 0.9em;
+    color: #666;
+}
+
+#building-container {
+    display: flex;
+    gap: 20px;
+}
+
+#floors {
+    display: flex;
+    flex-direction: column;
+}
+
+.floor {
+    height: 60px;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.floor-num {
+    width: 60px;
+    font-weight: bold;
+}
+
+.floor-btns {
+    display: flex;
+    gap: 5px;
+}
+
+.floor-btn {
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+#elevators-shaft {
+    position: relative;
+    width: 400px;
+    height: 600px;
+    background-color: #ddd;
+    border: 2px solid #333;
+}
+
+#elevators {
+    display: flex;
+    gap: 10px;
+    padding: 0 10px;
+}
+
+.elevator {
+    position: absolute;
+    width: 80px;
+    height: 50px;
+    background-color: #555;
+    color: white;
+    transition: bottom 1s linear;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 0;
+}
+
+.inner-btns {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+}
+
+.inner-btn {
+    font-size: 8px;
+    padding: 2px;
+    cursor: pointer;
+}
+
+.inner-btn.active {
+    background-color: yellow;
+    color: black;
+}

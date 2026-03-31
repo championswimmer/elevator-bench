@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elevator Simulator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>🛗 Elevator Simulator</h1>
+  <div class="info-bar">
+    Model: claude-opus-4.6 &nbsp;|&nbsp; Tool: pi &nbsp;|&nbsp; Provider: github
+  </div>
+
+  <div class="simulator">
+    <div class="building-container">
+      <div id="floors"></div>
+      <div id="elevator-shafts"></div>
+    </div>
+
+    <div class="panel-container">
+      <h3>Elevator Panel</h3>
+      <div id="elevator-panel"></div>
+    </div>
+  </div>
+
+  <div class="status-bar">
+    <div class="status-item">
+      <span class="label">Floors:</span><span class="value">10</span>
+    </div>
+    <div class="status-item">
+      <span class="label">Elevators:</span><span class="value">4</span>
+    </div>
+    <div class="status-item">
+      <span class="label">Status:</span><span class="value" id="status-text">Ready</span>
+    </div>
+  </div>
+
+  <script src="script.ts" type="module"></script>
+</body>
+</html>
