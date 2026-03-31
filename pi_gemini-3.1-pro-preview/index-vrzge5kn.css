@@ -1,0 +1,143 @@
+/* styles.css */
+body {
+  display: flex;
+  background-color: #f0f0f0;
+  justify-content: center;
+  margin: 0;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+#app {
+  display: flex;
+  gap: 50px;
+}
+
+#building-wrapper {
+  position: relative;
+  background-color: #e0e0e0;
+  border: 2px solid #333;
+  width: 600px;
+  height: 1000px;
+}
+
+#shaft-container {
+  position: absolute;
+  width: 500px;
+  height: 100%;
+  top: 0;
+  left: 100px;
+}
+
+.elevator {
+  position: absolute;
+  display: flex;
+  background-color: #aaa;
+  border: 2px solid #555;
+  justify-content: center;
+  align-items:  center;
+  width: 60px;
+  height: 80px;
+  transition: bottom 1s linear, background-color .3s;
+  bottom: 0;
+}
+
+.elevator.open {
+  background-color: #fffaaa;
+}
+
+.elevator-doors {
+  position: absolute;
+  background-color: #888;
+  width: 100%;
+  height: 100%;
+  transition: width .5s;
+}
+
+.elevator.open .elevator-doors {
+  width: 0%;
+}
+
+.elevator-label {
+  z-index: 10;
+  color: #fff;
+  font-weight: bold;
+}
+
+#floors-container {
+  position: absolute;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.floor {
+  position: absolute;
+  box-sizing: border-box;
+  display: flex;
+  pointer-events: auto;
+  border-bottom: 1px solid #999;
+  align-items:  center;
+  width: 100%;
+  height: 100px;
+  padding-left: 10px;
+  left: 0;
+}
+
+.floor:last-child {
+  border-bottom: none;
+}
+
+.floor-label {
+  width: 60px;
+  font-weight: bold;
+}
+
+.floor-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-left: 10px;
+}
+
+.floor-buttons button {
+  cursor: pointer;
+  padding: 5px 10px;
+  font-size: 16px;
+}
+
+#control-panel {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 6px #0000001a;
+}
+
+#inside-panel {
+  display: flex;
+  gap: 20px;
+}
+
+.elevator-panel {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+.elevator-panel h4 {
+  text-align: center;
+  margin-top: 0;
+}
+
+.elevator-buttons-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 5px;
+}
+
+.elevator-buttons-grid button {
+  cursor: pointer;
+  padding: 10px;
+}

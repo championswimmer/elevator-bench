@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Elevator Simulator</title>
+    
+  <link rel="stylesheet" crossorigin href="./index-xtzvb8zc.css"><script type="module" crossorigin src="./index-9f4bk031.js"></script></head>
+  <body>
+    <main class="app-shell">
+      <header class="app-header">
+        <p class="eyebrow">Interactive scheduling demo</p>
+        <h1>Elevator Simulator</h1>
+        <p class="run-meta">Model: <strong>gpt-5.4:high</strong> · Tool: <strong>pi</strong> · Provider: <strong>github</strong></p>
+        <p class="lead">
+          A 10-floor building with 4 elevators. Hall calls prefer the closest idle elevator,
+          busy periods queue requests, and each elevator finishes its current travel direction
+          before reversing.
+        </p>
+
+        <div class="header-grid">
+          <section class="summary-card">
+            <h2>Default configuration</h2>
+            <ul>
+              <li>Floors: 10 (0–9)</li>
+              <li>Elevators: 4 (E0–E3)</li>
+              <li>Serve port: 8808</li>
+            </ul>
+          </section>
+
+          <section class="summary-card">
+            <h2>How to use</h2>
+            <ul>
+              <li>Use floor ↑/↓ buttons to create hall calls.</li>
+              <li>Use elevator panels to choose destinations inside each car.</li>
+              <li>Watch queued and assigned requests update in real time.</li>
+            </ul>
+          </section>
+        </div>
+      </header>
+
+      <section class="simulator-layout">
+        <section class="building-card" aria-label="Elevator building simulation">
+          <div class="building-toolbar">
+            <div>
+              <h2>Building</h2>
+              <p>All elevators start idle at ground floor.</p>
+            </div>
+            <button id="reset-button" class="secondary-button" type="button">Reset simulation</button>
+          </div>
+
+          <div class="building-board">
+            <div class="floors-column">
+              <div class="column-heading">Floors &amp; hall calls</div>
+              <div id="floors-panel" class="floors-panel"></div>
+            </div>
+
+            <div class="shafts-column">
+              <div class="column-heading">Elevator shafts</div>
+              <div id="shaft-title-row" class="shaft-title-row"></div>
+              <div id="shafts-stage" class="shafts-stage"></div>
+            </div>
+          </div>
+        </section>
+
+        <aside class="side-panel">
+          <section class="panel-card">
+            <h2>Dispatch queue</h2>
+            <p id="queue-summary" class="muted-text">No pending hall requests.</p>
+          </section>
+
+          <section class="panel-card">
+            <h2>Elevator controls</h2>
+            <div id="elevator-panels" class="elevator-panels"></div>
+          </section>
+
+          <section class="panel-card">
+            <h2>Activity log</h2>
+            <ul id="activity-log" class="activity-log"></ul>
+          </section>
+        </aside>
+      </section>
+    </main>
+
+    
+    <script type="module">
+      const entryUrl = new URL('./script.ts', import.meta.url);
+      const waitForLoad = () =>
+        new Promise((resolve) => {
+          if (document.readyState === 'complete') {
+            resolve();
+            return;
+          }
+
+          window.addEventListener('load', resolve, { once: true });
+        });
+
+      await waitForLoad();
+
+      if (!window.__ELEVATOR_SIM_READY__) {
+        console.warn('Direct TypeScript module import failed; falling back to runtime loader.');
+        const source = await fetch(entryUrl).then((response) => response.text());
+        const blobUrl = URL.createObjectURL(new Blob([source], { type: 'text/javascript' }));
+
+        try {
+          await import(blobUrl);
+        } finally {
+          URL.revokeObjectURL(blobUrl);
+        }
+      }
+    </script>
+  </body>
+</html>

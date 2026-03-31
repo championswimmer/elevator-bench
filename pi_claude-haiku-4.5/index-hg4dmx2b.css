@@ -1,0 +1,270 @@
+/* styles.css */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  padding: 20px;
+  font-family: Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.info-bar {
+  background: #fffffff2;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  padding: 20px;
+  box-shadow: 0 4px 6px #0000001a;
+}
+
+.info-bar h1 {
+  color: #333;
+  margin-bottom: 10px;
+  font-size: 28px;
+}
+
+.info-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  font-size: 14px;
+}
+
+.info-details span {
+  color: #555;
+}
+
+.info-details strong {
+  color: #333;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.simulator {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 20px;
+}
+
+.building {
+  display: grid;
+  grid-template-columns: 1fr;
+  position: relative;
+  background: #fff;
+  border-radius: 10px;
+  min-height: 600px;
+  padding: 20px;
+  box-shadow: 0 4px 6px #0000001a;
+}
+
+.elevators {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-bottom: 2px solid #e0e0e0;
+  gap: 15px;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+}
+
+.elevator {
+  text-align: center;
+  display: flex;
+  position: relative;
+  background: #f5f5f5;
+  border: 3px solid #333;
+  border-radius: 5px;
+  flex-direction: column;
+  min-height: 500px;
+  padding: 15px;
+}
+
+.elevator-head {
+  color: #fff;
+  background: #667eea;
+  border-radius: 3px;
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.elevator-display {
+  color: #0f0;
+  display: flex;
+  background: #000;
+  border-radius: 3px;
+  justify-content: center;
+  align-items:  center;
+  min-height: 50px;
+  margin-bottom: 10px;
+  padding: 15px;
+  font-family: Courier New, monospace;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.elevator-status {
+  color: #666;
+  background: #eee;
+  border-radius: 3px;
+  margin-bottom: 10px;
+  padding: 8px;
+  font-size: 12px;
+}
+
+.elevator-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  flex-grow: 1;
+  gap: 5px;
+}
+
+.floor-btn {
+  cursor: pointer;
+  background: #f0f0f0;
+  border: 2px solid #ddd;
+  border-radius: 3px;
+  padding: 10px;
+  transition: all .3s;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.floor-btn:hover {
+  background: #e0e0e0;
+  border-color: #999;
+}
+
+.floor-btn.selected {
+  color: #fff;
+  background: #667eea;
+  border-color: #667eea;
+}
+
+.floor-btn.completed {
+  color: #fff;
+  background: #4caf50;
+  border-color: #4caf50;
+}
+
+.floors {
+  margin-top: 20px;
+}
+
+.floor {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  background: #fafafa;
+  border-bottom: 1px solid #eee;
+  align-items:  center;
+  gap: 20px;
+  padding: 15px;
+}
+
+.floor:last-child {
+  border-bottom: none;
+}
+
+.floor-label {
+  color: #333;
+  text-align: right;
+  font-weight: bold;
+}
+
+.floor-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.request-btn {
+  cursor: pointer;
+  background: #fff;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  padding: 8px 15px;
+  transition: all .3s;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.request-btn:hover {
+  background: #f0f0f0;
+  border-color: #667eea;
+}
+
+.request-btn.active {
+  color: #fff;
+  background: #ff9800;
+  border-color: #ff9800;
+}
+
+.request-btn.up:before {
+  content: "↑ ";
+}
+
+.request-btn.down:before {
+  content: "↓ ";
+}
+
+.stats {
+  background: #fff;
+  border-radius: 10px;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 20px;
+  box-shadow: 0 4px 6px #0000001a;
+}
+
+.stats h2 {
+  color: #333;
+  border-bottom: 2px solid #667eea;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  font-size: 18px;
+}
+
+#stats-content p {
+  color: #555;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+#stats-content span {
+  color: #667eea;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+@media (max-width: 1024px) {
+  .simulator {
+    grid-template-columns: 1fr;
+  }
+
+  .elevators {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stats {
+    height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .elevator {
+    min-height: 300px;
+  }
+
+  .elevator-buttons {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .floor {
+    grid-template-columns: 80px 1fr;
+  }
+}
