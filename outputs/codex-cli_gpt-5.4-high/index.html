@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Elevator Simulator</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <p class="meta-line">
+          Model: <strong>gpt-5.4-high</strong>
+          <span>Tool: <strong>codex-cli</strong></span>
+          <span>Provider: <strong>openai-default</strong></span>
+        </p>
+        <div class="hero-row">
+          <div>
+            <p class="eyebrow">Building Control</p>
+            <h1>Elevator Simulator</h1>
+            <p class="subtitle">
+              Four elevators coordinate hall calls, cabin requests, and queued
+              traffic across ten floors.
+            </p>
+          </div>
+          <div class="hero-actions">
+            <button id="random-request" class="ghost-button" type="button">
+              Random Hall Call
+            </button>
+            <button id="reset-sim" class="primary-button" type="button">
+              Reset Simulation
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <main class="layout">
+        <section class="tower-card">
+          <div class="section-heading">
+            <div>
+              <p class="section-kicker">Live Board</p>
+              <h2>Building View</h2>
+            </div>
+            <p id="system-status" class="status-pill">Running</p>
+          </div>
+          <div class="board">
+            <div id="floors" class="floors-column"></div>
+            <div id="shafts" class="shafts-panel"></div>
+          </div>
+        </section>
+
+        <aside class="sidebar">
+          <section class="panel-card">
+            <div class="section-heading compact">
+              <div>
+                <p class="section-kicker">Cabins</p>
+                <h2>Elevator Panels</h2>
+              </div>
+            </div>
+            <div id="elevator-panels" class="elevator-panels"></div>
+          </section>
+
+          <section class="panel-card">
+            <div class="section-heading compact">
+              <div>
+                <p class="section-kicker">Traffic</p>
+                <h2>Queue Snapshot</h2>
+              </div>
+            </div>
+            <div class="metrics-grid">
+              <div class="metric">
+                <span class="metric-label">Pending Hall Calls</span>
+                <strong id="pending-count">0</strong>
+              </div>
+              <div class="metric">
+                <span class="metric-label">Active Requests</span>
+                <strong id="active-count">0</strong>
+              </div>
+            </div>
+            <div id="queue-list" class="queue-list"></div>
+          </section>
+
+          <section class="panel-card">
+            <div class="section-heading compact">
+              <div>
+                <p class="section-kicker">Events</p>
+                <h2>Dispatch Log</h2>
+              </div>
+            </div>
+            <ul id="event-log" class="event-log"></ul>
+          </section>
+        </aside>
+      </main>
+    </div>
+
+    <script type="module" src="./script.ts"></script>
+  </body>
+</html>
