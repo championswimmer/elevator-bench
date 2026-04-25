@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Elevator Simulator</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+
+  <!-- Configuration (from info.json) -->
+  <div class="info-section" id="info-config">
+    <h2>Configuration</h2>
+    <dl>
+      <dt>Tool</dt>
+      <dd id="cfg-tool">-</dd>
+      <dt>Tool Mode</dt>
+      <dd id="cfg-tool-mode">-</dd>
+      <dt>Model</dt>
+      <dd id="cfg-model">-</dd>
+      <dt>Provider</dt>
+      <dd id="cfg-provider">-</dd>
+      <dt>Port</dt>
+      <dd id="cfg-port">-</dd>
+    </dl>
+  </div>
+
+  <h1>Elevator Simulator</h1>
+  <div id="status">Loading…</div>
+
+  <div id="building"></div>
+
+  <div class="info-section">
+    <h2>Building Configuration</h2>
+    <dl>
+      <dt>Floors</dt>
+      <dd>10 (Ground 0 → Floor 9)</dd>
+      <dt>Elevators</dt>
+      <dd>4 (E0 → E3)</dd>
+      <dt>Speed</dt>
+      <dd>2 floors / second</dd>
+      <dt>Capacity</dt>
+      <dd>8 passengers per elevator</dd>
+    </dl>
+  </div>
+
+  <div class="info-section">
+    <h2>How to Use</h2>
+    <dl>
+      <dt>Request Elevator</dt>
+      <dd>Click ▲ or ▼ buttons on any floor</dd>
+      <dt>Select Destination</dt>
+      <dd>Click a floor number inside an elevator to add/remove your stop</dd>
+      <dt>Status</dt>
+      <dd>Blue = moving · Gold = doors open · Gray = idle</dd>
+    </dl>
+  </div>
+
+  <script>
+    // Inject config from info.json at build time
+    const CONFIG = {"config":{"tool":"pi","tool_mode":"standard","model":"qwen3.6-35b-a3b","provider":"llamacpp-local-beelink-gtr9pro","port":"4234"}};
+    function injectConfig() {
+      const c = CONFIG.config;
+      const el = (id) => document.getElementById(id);
+      if (el('cfg-tool')) el('cfg-tool').textContent = c.tool || '-';
+      if (el('cfg-tool-mode')) el('cfg-tool-mode').textContent = c.tool_mode || '-';
+      if (el('cfg-model')) el('cfg-model').textContent = c.model || '-';
+      if (el('cfg-provider')) el('cfg-provider').textContent = c.provider || '-';
+      if (el('cfg-port')) el('cfg-port').textContent = c.port ? 'localhost:' + c.port : '-';
+    }
+    injectConfig();
+  </script>
+  <script type="module" src="./script.ts"></script>
+</body>
+</html>

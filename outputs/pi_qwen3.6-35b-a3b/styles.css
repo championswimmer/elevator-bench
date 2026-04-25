@@ -1,0 +1,297 @@
+/* ─── Reset & Base ─────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: #0f172a;
+  color: #e2e8f0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, #60a5fa, #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+#status {
+  font-size: 0.875rem;
+  color: #94a3b8;
+  margin-bottom: 1.5rem;
+  padding: 0.5rem 1rem;
+  background: #1e293b;
+  border-radius: 999px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ─── Building Container ──────────────────────────────────────────────────── */
+#building {
+  display: flex;
+  gap: 0;
+  background: #1e293b;
+  border-radius: 16px;
+  padding: 1rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  border: 1px solid #334155;
+  max-width: 900px;
+  width: 100%;
+}
+
+/* ─── Header Row ──────────────────────────────────────────────────────────── */
+.elevator-header-row {
+  display: flex;
+  width: 100%;
+  margin-bottom: 0.25rem;
+}
+
+.elevator-header {
+  flex: 1;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: #64748b;
+  padding: 0.5rem 0;
+  border-bottom: 2px solid #334155;
+}
+
+/* ─── Floor Row ───────────────────────────────────────────────────────────── */
+.floor-row {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  margin-top: 0.25rem;
+  border-top: 1px dashed #334155;
+  position: relative;
+}
+
+.floor-row:last-child {
+  border-bottom: 1px dashed #334155;
+}
+
+.floor-label {
+  width: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #64748b;
+  flex-shrink: 0;
+}
+
+/* ─── Elevator Shaft ──────────────────────────────────────────────────────── */
+.shaft {
+  flex: 1;
+  position: relative;
+  background: #0f172a;
+  border-radius: 8px;
+  margin: 0 2px;
+  overflow: hidden;
+  min-height: 60px;
+}
+
+/* Guide rail */
+.shaft::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, #334155, #475569, #334155);
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+/* ─── Elevator Box ────────────────────────────────────────────────────────── */
+.elevator-box {
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  height: 70%;
+  background: linear-gradient(180deg, #3b82f6, #2563eb);
+  border-radius: 8px;
+  border: 2px solid #60a5fa;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
+  z-index: 2;
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+}
+
+.elevator-box.idle {
+  background: linear-gradient(180deg, #475569, #334155);
+  border-color: #64748b;
+  box-shadow: none;
+}
+
+.elevator-box.moving {
+  background: linear-gradient(180deg, #3b82f6, #2563eb);
+  border-color: #60a5fa;
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+  animation: pulse 1s ease-in-out infinite alternate;
+}
+
+.elevator-box.door-open {
+  background: linear-gradient(180deg, #f59e0b, #d97706);
+  border-color: #fbbf24;
+  box-shadow: 0 0 25px rgba(245, 158, 11, 0.5);
+}
+
+@keyframes pulse {
+  from { box-shadow: 0 0 10px rgba(59, 130, 246, 0.4); }
+  to   { box-shadow: 0 0 25px rgba(59, 130, 246, 0.7); }
+}
+
+/* Direction indicator */
+.dir-indicator {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #fbbf24;
+  line-height: 1;
+}
+
+/* Passenger badge */
+.passenger-badge {
+  font-size: 0.6rem;
+  background: rgba(0, 0, 0, 0.4);
+  color: #e2e8f0;
+  padding: 1px 5px;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+/* ─── Destination Buttons ─────────────────────────────────────────────────── */
+.dest-btn {
+  width: 18px;
+  height: 18px;
+  border: 1px solid #475569;
+  background: #1e293b;
+  color: #94a3b8;
+  border-radius: 3px;
+  font-size: 0.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+  padding: 0;
+}
+
+.dest-btn:hover {
+  background: #334155;
+  color: #e2e8f0;
+  border-color: #60a5fa;
+}
+
+.dest-btn.active {
+  background: #3b82f6;
+  color: #fff;
+  border-color: #60a5fa;
+  box-shadow: 0 0 6px rgba(59, 130, 246, 0.5);
+}
+
+/* ─── Hall Call Buttons ───────────────────────────────────────────────────── */
+.hall-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-left: 4px;
+  flex-shrink: 0;
+}
+
+.hall-btn {
+  width: 32px;
+  height: 32px;
+  border: 2px solid #334155;
+  background: #1e293b;
+  color: #64748b;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  padding: 0;
+}
+
+.hall-btn:hover {
+  border-color: #60a5fa;
+  color: #e2e8f0;
+  background: #334155;
+}
+
+.hall-btn.active {
+  border-color: #3b82f6;
+  color: #fff;
+  background: #3b82f6;
+  box-shadow: 0 0 12px rgba(59, 130, 246, 0.4);
+}
+
+.hall-btn.hall-up {
+  border-radius: 8px 8px 2px 2px;
+}
+
+.hall-btn.hall-down {
+  border-radius: 2px 2px 8px 8px;
+}
+
+/* ─── Info Section ────────────────────────────────────────────────────────── */
+.info-section {
+  margin-top: 2rem;
+  padding: 1rem 1.5rem;
+  background: #1e293b;
+  border-radius: 12px;
+  border: 1px solid #334155;
+  max-width: 900px;
+  width: 100%;
+}
+
+.info-section h2 {
+  font-size: 1rem;
+  color: #60a5fa;
+  margin-bottom: 0.75rem;
+}
+
+.info-section dl {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.25rem 1rem;
+  font-size: 0.875rem;
+}
+
+.info-section dt {
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+.info-section dd {
+  color: #e2e8f0;
+}
+
+/* ─── Responsive ──────────────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  body { padding: 1rem; }
+  h1 { font-size: 1.5rem; }
+  .floor-label { width: 32px; font-size: 0.65rem; }
+  .hall-btn { width: 24px; height: 24px; font-size: 0.75rem; }
+  .dest-btn { width: 14px; height: 14px; font-size: 0.45rem; }
+}

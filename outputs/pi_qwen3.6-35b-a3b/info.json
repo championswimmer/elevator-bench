@@ -1,0 +1,17 @@
+{
+  "config": {
+    "tool": "pi",
+    "tool_mode": "standard",
+    "model": "qwen3.6-35b-a3b",
+    "provider": "llamacpp-local-beelink-gtr9pro",
+    "port": "4234"
+  },
+  "results": {
+    "context_window": "252000",
+    "context_fill": "23580",
+    "dollar_cost": "0",
+    "time_taken": "",
+    "tokens_sent": "7800",
+    "tokens_received": "11000"
+  }
+}
