@@ -1,0 +1,484 @@
+/* ─── Design tokens ──────────────────────────────────────────────────────── */
+:root {
+  --bg:          #080812;
+  --bg-2:        #0f0f1c;
+  --bg-3:        #171728;
+  --bg-4:        #1e1e30;
+  --border:      #2a2a42;
+  --border-hi:   #3a3a58;
+
+  --text:        #dde0f0;
+  --text-dim:    #6a6a90;
+  --text-faint:  #3e3e60;
+
+  --blue:        #4a8fe8;
+  --blue-glow:   rgba(74, 143, 232, 0.25);
+  --blue-dark:   #1a3a70;
+
+  --green:       #45c97a;
+  --green-glow:  rgba(69, 201, 122, 0.25);
+  --green-dark:  #1a5030;
+
+  --orange:      #ff7043;
+  --orange-glow: rgba(255, 112, 67, 0.30);
+
+  --yellow:      #ffd54f;
+  --yellow-glow: rgba(255, 213, 79, 0.25);
+
+  --red:         #ef5350;
+
+  --radius:      10px;
+  --radius-sm:   6px;
+  --shadow:      0 6px 24px rgba(0,0,0,0.6);
+  --shadow-sm:   0 2px 8px  rgba(0,0,0,0.4);
+}
+
+/* ─── Reset / base ───────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+/* ─── App shell ──────────────────────────────────────────────────────────── */
+#app {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 16px 16px 48px;
+}
+
+/* ─── Header ─────────────────────────────────────────────────────────────── */
+.app-header {
+  text-align: center;
+  padding: 24px 0 20px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 28px;
+}
+
+.app-header h1 {
+  font-size: 1.9rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--blue);
+  text-shadow: 0 0 32px var(--blue-glow);
+  margin-bottom: 12px;
+}
+
+.meta-badges {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--bg-3);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 4px 14px;
+  font-size: 0.78rem;
+  color: var(--text-dim);
+}
+.badge strong { color: var(--text); font-weight: 600; }
+
+/* ─── Main layout ────────────────────────────────────────────────────────── */
+.app-main {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* ─── Building section ───────────────────────────────────────────────────── */
+.building-section {
+  display: flex;
+  justify-content: center;
+}
+
+.building-card {
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow);
+  overflow-x: auto;
+}
+
+.building-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+}
+
+/* ── Floor column ────────────────────────────────────────────────────────── */
+.floors-col {
+  display: flex;
+  flex-direction: column;
+  border-right: 2px solid var(--border);
+  padding-right: 10px;
+  user-select: none;
+}
+
+.floor-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 4px;
+  border-bottom: 1px solid var(--text-faint);
+}
+.floor-row:last-child { border-bottom: none; }
+
+.floor-badge {
+  width: 22px;
+  text-align: right;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-dim);
+  font-variant-numeric: tabular-nums;
+}
+
+.call-btn-group {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  align-items: center;
+}
+
+.btn-spacer { width: 26px; height: 26px; }
+
+.call-btn {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border-hi);
+  background: var(--bg-4);
+  color: var(--text-dim);
+  font-size: 0.6rem;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s, box-shadow 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+.call-btn:hover {
+  background: var(--bg-3);
+  border-color: var(--blue);
+  color: var(--blue);
+}
+.call-btn.active {
+  background: var(--orange);
+  border-color: var(--orange);
+  color: #fff;
+  box-shadow: 0 0 10px var(--orange-glow);
+  animation: pulse-orange 1.2s ease-in-out infinite;
+}
+
+@keyframes pulse-orange {
+  0%, 100% { box-shadow: 0 0 6px  var(--orange-glow); }
+  50%       { box-shadow: 0 0 18px var(--orange-glow); }
+}
+
+/* ── Shafts area ─────────────────────────────────────────────────────────── */
+.shafts-area {
+  display: flex;
+  flex-direction: column;
+}
+
+.shaft-labels-row {
+  display: flex;
+  padding-left: 2px;
+  padding-bottom: 6px;
+}
+
+.shaft-lbl {
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--blue);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.shafts-body {
+  display: flex;
+  position: relative;
+}
+
+.shaft {
+  position: relative;
+  border-right: 1px solid var(--border);
+  border-left: 1px solid var(--border);
+  background: repeating-linear-gradient(
+    to top,
+    var(--text-faint) 0px,
+    var(--text-faint) 1px,
+    transparent 1px,
+    transparent 88px   /* must match FLOOR_HEIGHT constant */
+  );
+  margin-left: -1px;  /* collapse shared borders */
+}
+
+.shaft-guide {
+  position: absolute;
+  left: 0; right: 0;
+  height: 1px;
+  background: var(--border);
+  pointer-events: none;
+}
+
+/* ─── Elevator car ───────────────────────────────────────────────────────── */
+.elevator-car {
+  position: absolute;
+  left: 7px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: bottom 0.8s linear;  /* matched to MOVE_TIME */
+  box-shadow: var(--shadow-sm);
+  z-index: 2;
+}
+
+/* Idle state */
+.elevator-car.idle {
+  background: linear-gradient(160deg, #1c2e52, #0f1c38);
+  border: 1.5px solid #2a4a82;
+}
+.elevator-car.idle .hud-id { color: #4a8fe8; }
+
+/* Moving state */
+.elevator-car.moving {
+  background: linear-gradient(160deg, #1a3a70, #0f2550);
+  border: 1.5px solid var(--blue);
+  box-shadow: 0 0 16px var(--blue-glow), var(--shadow-sm);
+}
+.elevator-car.moving .hud-id { color: var(--blue); }
+
+/* Doors-open state */
+.elevator-car.doors_open {
+  background: linear-gradient(160deg, #1a4a2e, #0f2c1a);
+  border: 1.5px solid var(--green);
+  box-shadow: 0 0 16px var(--green-glow), var(--shadow-sm);
+}
+.elevator-car.doors_open .hud-id { color: var(--green); }
+
+/* ── Doors ───────────────────────────────────────────────────────────────── */
+.car-doors {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+}
+
+.door-panel {
+  flex: 1;
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.04) 0%,
+    rgba(255,255,255,0.01) 100%
+  );
+  border-right: 1px solid rgba(255,255,255,0.06);
+  transition: transform 0.4s ease;
+  transform-origin: left center;
+}
+.door-panel.right {
+  border-right: none;
+  border-left: 1px solid rgba(255,255,255,0.06);
+  transform-origin: right center;
+}
+
+/* Slide doors open */
+.elevator-car.doors_open .door-panel.left  { transform: scaleX(0.08); }
+.elevator-car.doors_open .door-panel.right { transform: scaleX(0.08); }
+
+/* ── HUD strip ───────────────────────────────────────────────────────────── */
+.car-hud {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2px 6px;
+  background: rgba(0,0,0,0.35);
+  font-size: 0.68rem;
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
+  height: 18px;
+}
+.hud-id    { font-weight: 700; letter-spacing: 0.05em; }
+.hud-floor { color: var(--yellow); font-weight: 700; font-size: 0.72rem; }
+.hud-dir   { color: var(--text-dim); font-size: 0.6rem; }
+
+.elevator-car.moving    .hud-floor { color: var(--blue); }
+.elevator-car.doors_open .hud-floor { color: var(--green); }
+
+/* ─── Bottom section ─────────────────────────────────────────────────────── */
+.bottom-section {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.panel-card,
+.log-card {
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow);
+  flex: 1;
+  min-width: 300px;
+}
+
+.card-heading {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+.card-icon { font-size: 1.4rem; line-height: 1; margin-top: 2px; }
+
+.card-heading h2 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 3px;
+}
+.card-sub { font-size: 0.78rem; color: var(--text-dim); }
+
+/* ─── Interior panels ────────────────────────────────────────────────────── */
+.control-panels {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.interior-panel {
+  background: var(--bg-3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px;
+}
+
+.panel-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--blue);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
+}
+
+.panel-status {
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  margin-bottom: 10px;
+  min-height: 16px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Floor buttons inside elevator (rendered 9→0, top to bottom) */
+.floor-btn-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 5px;
+}
+
+.floor-btn {
+  aspect-ratio: 1;
+  border-radius: 4px;
+  border: 1.5px solid var(--border-hi);
+  background: var(--bg-4);
+  color: var(--text-dim);
+  font-size: 0.72rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.12s, border-color 0.12s, color 0.12s, box-shadow 0.12s;
+  font-variant-numeric: tabular-nums;
+}
+.floor-btn:hover {
+  background: var(--blue-dark);
+  border-color: var(--blue);
+  color: var(--blue);
+}
+/* Queued destination */
+.floor-btn.queued {
+  background: var(--yellow-glow);
+  border-color: var(--yellow);
+  color: var(--yellow);
+  box-shadow: 0 0 8px var(--yellow-glow);
+  animation: pulse-yellow 1.4s ease-in-out infinite;
+}
+/* Currently open at this floor */
+.floor-btn.open {
+  background: var(--green-glow);
+  border-color: var(--green);
+  color: var(--green);
+  box-shadow: 0 0 10px var(--green-glow);
+  animation: none;
+}
+
+@keyframes pulse-yellow {
+  0%, 100% { box-shadow: 0 0 5px  var(--yellow-glow); }
+  50%       { box-shadow: 0 0 14px var(--yellow-glow); }
+}
+
+/* ─── Event log ──────────────────────────────────────────────────────────── */
+.event-log {
+  max-height: 320px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+.event-log::-webkit-scrollbar       { width: 6px; }
+.event-log::-webkit-scrollbar-track { background: transparent; }
+.event-log::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+.log-entry {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background: var(--bg-3);
+  border-left: 2px solid var(--border);
+  font-size: 0.76rem;
+  line-height: 1.4;
+  animation: slide-in 0.18s ease;
+}
+.log-entry:first-child { border-left-color: var(--blue); }
+
+@keyframes slide-in {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.log-ts {
+  color: var(--text-faint);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  font-size: 0.7rem;
+}
+.log-msg { color: var(--text-dim); }
+
+/* ─── Responsive ─────────────────────────────────────────────────────────── */
+@media (max-width: 680px) {
+  .bottom-section { flex-direction: column; }
+  .panel-card, .log-card { min-width: unset; width: 100%; }
+  .app-header h1 { font-size: 1.4rem; }
+}

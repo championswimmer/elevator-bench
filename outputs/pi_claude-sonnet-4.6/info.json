@@ -3,15 +3,16 @@
     "tool": "pi",
     "tool_mode": "standard",
     "model": "claude-sonnet-4.6",
-    "provider": "github",
-    "port": "8803"
+    "effort": "medium",
+    "provider": "anthropic-api",
+    "port": "8383"
   },
   "results": {
-    "context_window": "204800",
-    "context_fill": "32500",
-    "dollar_cost": "0.14",
-    "time_taken": "00:02:15",
-    "tokens_sent": "37000",
-    "tokens_received": "14000"
+    "context_window": "1000000",
+    "context_fill": "83400",
+    "dollar_cost": "2.12",
+    "time_taken": "00:16:00",
+    "tokens_sent": "95000",
+    "tokens_received": "56000"
   }
 }

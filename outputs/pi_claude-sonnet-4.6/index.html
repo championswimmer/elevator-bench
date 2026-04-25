@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Elevator Simulator</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="app">
+
+    <!-- ── Header ─────────────────────────────────────────────────────────── -->
+    <header class="app-header">
+      <h1>🏢 Elevator Simulator</h1>
+      <div class="meta-badges">
+        <span class="badge">Tool <strong>pi</strong></span>
+        <span class="badge">Model <strong>claude-sonnet-4.6</strong></span>
+        <span class="badge">Provider <strong>anthropic-api</strong></span>
+      </div>
+    </header>
+
+    <main class="app-main">
+
+      <!-- ── Building visualisation ───────────────────────────────────────── -->
+      <section class="building-section">
+        <div class="building-card">
+          <div class="building-layout">
+
+            <!-- Left column: floor labels + hall-call buttons -->
+            <div id="floors-col" class="floors-col"></div>
+
+            <!-- Right section: shaft labels + elevator shafts -->
+            <div id="shafts-area" class="shafts-area"></div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Interior controls + Log (side by side on wide screens) ───────── -->
+      <section class="bottom-section">
+
+        <!-- Elevator interior panels -->
+        <div class="panel-card">
+          <div class="card-heading">
+            <span class="card-icon">🔢</span>
+            <div>
+              <h2>Interior Controls</h2>
+              <p class="card-sub">Select a destination floor from inside each elevator</p>
+            </div>
+          </div>
+          <div id="control-panels" class="control-panels"></div>
+        </div>
+
+        <!-- Event log -->
+        <div class="log-card">
+          <div class="card-heading">
+            <span class="card-icon">📋</span>
+            <div>
+              <h2>Event Log</h2>
+              <p class="card-sub">Live dispatch &amp; arrival events</p>
+            </div>
+          </div>
+          <div id="event-log" class="event-log"></div>
+        </div>
+
+      </section>
+
+    </main>
+  </div>
+
+  <script type="module" src="script.ts"></script>
+</body>
+</html>
