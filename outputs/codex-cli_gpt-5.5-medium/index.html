@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Elevator Simulator</title>
+    <meta name="model" content="gpt-5.4-high" />
+    <meta name="tool" content="codex-cli" />
+    <meta name="provider" content="openai-default" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="module" src="./script.js"></script>
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <div>
+          <h1>Elevator Simulator</h1>
+          <p class="subtitle">10 floors, 4 elevators, directional dispatch</p>
+        </div>
+        <dl class="run-info" aria-label="Run information">
+          <div>
+            <dt>Model</dt>
+            <dd>gpt-5.4-high</dd>
+          </div>
+          <div>
+            <dt>Tool</dt>
+            <dd>codex-cli</dd>
+          </div>
+          <div>
+            <dt>Provider</dt>
+            <dd>openai-default</dd>
+          </div>
+        </dl>
+      </header>
+
+      <section class="dashboard" aria-label="Elevator simulator">
+        <div class="building-panel">
+          <div class="building-header">
+            <span>Floor</span>
+            <span>Hall call</span>
+            <span>Elevator shafts</span>
+          </div>
+          <div id="building" class="building" aria-live="polite"></div>
+        </div>
+
+        <aside class="control-panel" aria-label="Elevator controls">
+          <section>
+            <h2>Elevators</h2>
+            <div id="elevatorPanels" class="elevator-panels"></div>
+          </section>
+
+          <section>
+            <h2>Dispatch Queue</h2>
+            <ol id="queueList" class="queue-list"></ol>
+          </section>
+
+          <section>
+            <h2>Event Log</h2>
+            <div id="eventLog" class="event-log" aria-live="polite"></div>
+          </section>
+        </aside>
+      </section>
+    </main>
+  </body>
+</html>
