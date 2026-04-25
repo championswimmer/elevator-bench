@@ -1,0 +1,17 @@
+{
+  "config": {
+    "tool": "pi",
+    "tool_mode": "standard",
+    "model": "kimi-k2.6",
+    "provider": "openrouter",
+    "port": "8913"
+  },
+  "results": {
+    "context_window": "262000",
+    "context_fill": "8.6%",
+    "dollar_cost": "0.19",
+    "time_taken": "",
+    "tokens_sent": "179000",
+    "tokens_received": "12000"
+  }
+}
