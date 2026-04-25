@@ -1,0 +1,18 @@
+{
+  "config": {
+    "tool": "claude-code",
+    "tool_mode": "standard",
+    "model": "claude-opus-4.7",
+    "effort": "high",
+    "provider": "anthropic-default",
+    "port": "8813"
+  },
+  "results": {
+    "context_window": "1000000",
+    "context_fill": "112800",
+    "dollar_cost": "4.91",
+    "time_taken": "00:13:00",
+    "tokens_sent": "172800",
+    "tokens_received": "63200"
+  }
+}

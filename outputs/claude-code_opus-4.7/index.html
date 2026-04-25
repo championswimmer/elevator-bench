@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elevator Simulator</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <h1>Elevator Simulator</h1>
+    <div class="info-bar">
+      <span class="info-item"><span class="info-key">Tool</span><span class="info-val">claude-code</span></span>
+      <span class="info-item"><span class="info-key">Model</span><span class="info-val">claude-opus-4.7</span></span>
+      <span class="info-item"><span class="info-key">Provider</span><span class="info-val">anthropic-default</span></span>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="building-section">
+      <div class="section-title">Building</div>
+      <div id="building" class="building"></div>
+      <div class="legend">
+        <span><span class="dot up"></span>Hall up call</span>
+        <span><span class="dot down"></span>Hall down call</span>
+        <span><span class="dot car"></span>Car call</span>
+      </div>
+    </section>
+
+    <aside class="panels-section">
+      <div class="section-title">Elevator Panels</div>
+      <div id="elevator-panels"></div>
+    </aside>
+  </main>
+
+  <script type="module" src="./script.js"></script>
+</body>
+</html>
